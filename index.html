@@ -65,6 +65,18 @@
     .btn:hover {
       background-color: #2f477a; /* Biraz daha koyu ton */
     }
+    /* Dört dil için tablo */
+    table.multilang {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    table.multilang th,
+    table.multilang td {
+      border: 1px solid #ccc;
+      vertical-align: top;
+      padding: 0.5rem;
+    }
     iframe {
       width: 100%;
       min-height: 400px;
@@ -77,6 +89,18 @@
       .container {
         margin: 0.5rem;
         padding: 0.8rem;
+      }
+      /* Düşük genişlikte tabloda sütunları blok halinde göstermek */
+      table.multilang,
+      table.multilang tr,
+      table.multilang td,
+      table.multilang th {
+        display: block;
+        width: 100%;
+      }
+      table.multilang td,
+      table.multilang th {
+        margin-bottom: 1rem;
       }
     }
   </style>
@@ -93,12 +117,46 @@
 </header>
 
 <div class="container">
-  <!-- telc A2 Bilgileri (Türkçe/Almanca) -->
-  <p><strong>Türkçe:</strong> Bu sayfada telc A2 sınavı hakkında temel bilgilere, puan tablolarına ve sınav çözüm videolarına ulaşabilirsiniz. Sınav toplam 60 puan üzerinden değerlendirilir ve geçmek için en az <strong>36 puan</strong> almak gerekir.</p>
-  <p><strong>Deutsch:</strong> Auf dieser Seite finden Sie grundlegende Informationen zur telc A2 Prüfung, Punktetabellen und Lösungsvideos. Die Prüfung wird mit insgesamt 60 Punkten bewertet; zum Bestehen sind mindestens <strong>36 Punkte</strong> erforderlich.</p>
-  
-  <h2>Test Bölümleri / Prüfungsbereiche</h2>
+  <!-- 4 Dil - Kısa Açıklama Tablosu -->
+  <table class="multilang">
+    <tr>
+      <th>Türkçe</th>
+      <th>Deutsch</th>
+      <th>فارسی</th>
+      <th>العربية</th>
+    </tr>
+    <tr>
+      <td>
+        Bu sayfada telc A2 sınavı hakkında kısa bilgilere, puan tablolarına ve çözüm videolarına ulaşabilirsiniz.
+      </td>
+      <td>
+        Auf dieser Seite finden Sie kurze Informationen zur telc A2 Prüfung, Punktetabellen und Lösungsvideos.
+      </td>
+      <td>
+        در این صفحه می‌توانید اطلاعات مختصر درباره آزمون telc A2، جدول امتیازات و ویدیوهای حل آزمون را بیابید.
+      </td>
+      <td>
+        في هذه الصفحة، يمكنك العثور على معلومات مختصرة حول اختبار telc A2 وجداول الدرجات وفيديوهات الحل.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Sınav 60 puan üzerinden değerlendirilir; geçmek için en az 36 puan gerekir.
+      </td>
+      <td>
+        Die Prüfung wird mit insgesamt 60 Punkten bewertet; zum Bestehen sind mindestens 36 Punkte erforderlich.
+      </td>
+      <td>
+        آزمون بر اساس ۶۰ امتیاز ارزیابی می‌شود؛ برای قبولی به حداقل ۳۶ امتیاز نیاز است.
+      </td>
+      <td>
+        يتم تقييم الامتحان من 60 نقطة؛ للنجاح يجب الحصول على 36 نقطة على الأقل.
+      </td>
+    </tr>
+  </table>
+
   <!-- 4 Buton (Lesen, Schreiben, Hören, Sprechen) -->
+  <h2>Test Bölümleri / Prüfungsbereiche</h2>
   <div class="buttons">
     <a class="btn" href="Lesena2.html">Lesen</a>
     <a class="btn" href="schreibena2.html">Schreiben</a>
@@ -106,48 +164,9 @@
     <a class="btn" href="sprechena2.html">Sprechen</a>
   </div>
 
-  <!-- AÇIKLAMA KISMI: Telc A2 Puan Tablosu ve Geçme Notları -->
-  <h3>Açıklama / Erläuterung (Almanca / Türkçe)</h3>
-  <p><strong>Telc A2 Puan Tablosu / Punktetabelle</strong></p>
-  <ul>
-    <li><strong>Hören (Dinleme)</strong>: 3 bölüm (Teil 1, Teil 2, Teil 3), her biri 5 puan = toplam 15 puan</li>
-    <li><strong>Lesen (Okuma)</strong>: 3 bölüm (Teil 1, Teil 2, Teil 3), her biri 5 puan = toplam 15 puan</li>
-    <li><strong>Schreiben (Yazma)</strong>: 2 bölüm 
-      <ul>
-        <li>Teil 1 (Brief): 10 puan</li>
-        <li>Teil 2 (E-Mail): 5 puan</li>
-      </ul>
-      Toplam 15 puan
-    </li>
-    <li><strong>Sprechen (Konuşma)</strong>: 3 bölüm 
-      <ul>
-        <li>Teil 1 (Sich vorstellen): 5 puan</li>
-        <li>Teil 2 (Ein Alltagsgespräch führen): 10 puan</li>
-        <li>Teil 3 (Etwas aushandeln): 6 puan</li>
-      </ul>
-      Toplam 21 puan
-    </li>
-    <li><strong>Gesamtpunktzahl (Toplam Puan):</strong> 60</li>
-  </ul>
-
-  <p><strong>Telc A2 Geçme Notları / Noten</strong></p>
-  <p>
-    <em>Wer erhält ein Zertifikat?</em><br/>
-    Um die Prüfung zu bestehen, müssen die Teilnehmenden 60% der möglichen Höchstpunktzahl erreichen (36 Punkte).<br/>
-    <em>Sınavı geçmek için, katılımcıların maksimum 60 puanın %60'ını, yani 36 puanı alması gerekir.</em>
-  </p>
-  <p>
-    <strong>Noten (Almanca / Türkçe)</strong><br/>
-    • 54–60 Punkte: sehr gut / çok iyi<br/>
-    • 48–53 Punkte: gut / iyi<br/>
-    • 42–47,5 Punkte: befriedigend / tatmin edici<br/>
-    • 36–41,5 Punkte: ausreichend / yeterli<br/>
-    • 0–35,5 Punkte: teilgenommen / (başarısız)
-  </p>
-
   <!-- Sınav Çözüm Videoları -->
   <h2>Sınav Çözüm Videoları</h2>
-  <p><em>Video açmak için butona tıklayın.</em></p>
+  <p style="text-align: center;"><em>Video açmak için butona tıklayın.</em></p>
   <p style="text-align: center;">
     <button class="btn" onclick="toggleVideo()">Çözüm Videosunu Göster/Gizle</button>
   </p>
