@@ -7,9 +7,9 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding-top: 70px; /* Fixed header alanı kadar boşluk bırakıyoruz */
+      padding-top: 70px; /* Fixed header için boşluk */
     }
-    /* Fixed header bölümü */
+    /* Fixed Header: Ana Sayfaya Dön Butonu */
     #header {
       position: fixed;
       top: 0;
@@ -48,6 +48,12 @@
       padding: 10px 20px;
       font-size: 1rem;
     }
+    #annotatedLetter {
+      background-color: #f1f1f1;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
@@ -79,35 +85,28 @@
   <div id="section2">
     <h2>Mektup Yazma</h2>
     <p>
-      Lütfen aşağıdaki alana mektubunuzu yazınız. Yazım tamamlandığında "Mektubu Gönder" butonuna basınız. 
+      Lütfen aşağıdaki alana mektubunuzu yazınız. Yazım tamamlandığında "Mektubu Gönder" butonuna basınız.
       Mektubunuz, hocalar tarafından kontrol edildikten sonra e-posta ile puanınız bildirilecektir.
     </p>
     <textarea id="letter" rows="10" placeholder="Mektubunuzu buraya yazınız..."></textarea>
     <button type="button" onclick="submitLetter()">Mektubu Gönder</button>
     <p id="letterResult"></p>
+    <!-- Düzeltme sonrası metnin gösterileceği alan -->
+    <div id="annotatedLetter"></div>
   </div>
 
   <script>
     // 20 dakikalık geri sayım için hedef zamanı ayarla
     var countDownDate = new Date().getTime() + 20 * 60 * 1000;
-
     var timerInterval = setInterval(function() {
       var now = new Date().getTime();
       var distance = countDownDate - now;
-
-      // Dakika ve saniyeyi hesapla
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      // Timer elemanını güncelle
       document.getElementById("timer").innerHTML = minutes + "dk " + (seconds < 10 ? "0" + seconds : seconds) + "sn";
-
-      // Süre dolduysa
       if (distance < 0) {
         clearInterval(timerInterval);
         document.getElementById("timer").innerHTML = "Süre doldu!";
-
-        // Form ve mektup gönderme butonlarını devre dışı bırak
         document.getElementById("fillForm").querySelector("button").disabled = true;
         document.getElementById("section2").querySelector("button").disabled = true;
       }
@@ -116,31 +115,72 @@
     function checkAnswers() {
       var answer1 = document.getElementById('q1').value.trim().toLowerCase();
       var answer2 = document.getElementById('q2').value.trim().toLowerCase();
-
       var correct1 = 'bin';
       var correct2 = 'hast';
-
       var score = 0;
       var total = 2;
-
       if(answer1 === correct1) score++;
       if(answer2 === correct2) score++;
-
       document.getElementById('result').innerHTML = "Doğru cevap sayınız: " + score + " / " + total;
+    }
+
+    // LanguageTool API ile gramer kontrolü yapar
+    function checkGrammar(text) {
+      return fetch('https://api.languagetool.org/v2/check', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'text=' + encodeURIComponent(text) + '&language=de-DE'
+      })
+      .then(response => response.json());
     }
 
     function submitLetter() {
       var letterContent = document.getElementById('letter').value.trim();
+      var letterResult = document.getElementById('letterResult');
+      var annotatedDiv = document.getElementById('annotatedLetter');
 
       if(letterContent === "") {
         alert("Lütfen mektubunuzu yazınız!");
         return;
       }
 
-      document.getElementById('letterResult').innerHTML = "Mektubunuz gönderildi. Puanınız en kısa sürede e-posta ile bildirilecektir.";
+      // Gramer kontrolü yap
+      checkGrammar(letterContent)
+        .then(result => {
+          if(result.matches && result.matches.length > 0) {
+            // Hataları işlemek için metni parçalara ayırıyoruz
+            var annotatedText = "";
+            var lastIndex = 0;
+            var matches = result.matches.sort((a, b) => a.offset - b.offset);
+            matches.forEach(match => {
+              // Hata öncesi kısmı ekle
+              annotatedText += letterContent.substring(lastIndex, match.offset);
+              // Hatalı kısım
+              var errorText = letterContent.substr(match.offset, match.length);
+              // Öneri varsa ilk öneriyi al, yoksa hatalı metni koru
+              var suggestion = (match.replacements && match.replacements.length > 0) ? match.replacements[0].value : errorText;
+              // Hatalı kısmı üstü çizili, öneriyi de altı çizili olarak ekle
+              annotatedText += "<del style='color:red; text-decoration:line-through;'>" + errorText + "</del>" +
+                               "<ins style='color:green;'>" + suggestion + "</ins>";
+              lastIndex = match.offset + match.length;
+            });
+            // Son kısım
+            annotatedText += letterContent.substring(lastIndex);
+            annotatedDiv.innerHTML = "<p>Gramer hataları tespit edildi. Düzeltilmiş metin:</p><p>" + annotatedText + "</p>";
+            letterResult.innerHTML = "Lütfen düzeltilmiş metni gözden geçirin.";
+          } else {
+            annotatedDiv.innerHTML = "<p>Gramer hatası bulunamadı.</p><p>" + letterContent + "</p>";
+            letterResult.innerHTML = "Mektubunuz gönderildi. Puanınız en kısa sürede e-posta ile bildirilecektir.";
+          }
+        })
+        .catch(error => {
+          console.error("Gramer kontrol hatası:", error);
+          letterResult.innerHTML = "Gramer kontrolü yapılamadı. Lütfen daha sonra tekrar deneyin.";
+        });
     }
   </script>
 
 </body>
 </html>
- 
