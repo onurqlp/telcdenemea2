@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>telc A2 Deneme Sınavı</title>
+  <style>
+    /* Temel sıfırlama ve font ayarları */
+    * {
+      margin: 0; 
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #e8f7f7;
+      color: #333;
+      margin: 0;
+    }
+    header, footer {
+      background-color: #3B5998; /* Facebook mavisi */
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    .logo {
+      max-width: 300px;
+      height: auto;
+    }
+    .container {
+      max-width: 800px;
+      margin: 1rem auto;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin: 0.5rem 0;
+      line-height: 1.4;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .btn {
+      background-color: #3B5998;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #2f477a; /* Biraz daha koyu ton */
+    }
+    iframe {
+      width: 100%;
+      min-height: 400px;
+      border: 2px solid #3B5998;
+      margin-top: 1rem;
+      display: none; /* Başlangıçta gizli */
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        margin: 0.5rem;
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <!-- Logo -->
+  <img class="logo" 
+       src="https://www.aydadil.com/wp-content/uploads/2024/03/logo-beyaz-e1742214909433-768x119.png" 
+       alt="Ayda Dil Logo">
+  <h1>telc A2 Deneme Sınavına Hoşgeldiniz</h1>
+  <h2>Willkommen zum telc A2 Probeprüfung</h2>
+</header>
+
+<div class="container">
+  <!-- telc A2 Bilgileri (Türkçe/Almanca) -->
+  <p><strong>Türkçe:</strong> Bu sayfada telc A2 sınavı hakkında temel bilgilere, puan tablolarına ve sınav çözüm videolarına ulaşabilirsiniz. Sınav toplam 60 puan üzerinden değerlendirilir ve geçmek için en az <strong>36 puan</strong> almak gerekir.</p>
+  <p><strong>Deutsch:</strong> Auf dieser Seite finden Sie grundlegende Informationen zur telc A2 Prüfung, Punktetabellen und Lösungsvideos. Die Prüfung wird mit insgesamt 60 Punkten bewertet; zum Bestehen sind mindestens <strong>36 Punkte</strong> erforderlich.</p>
+  
+  <h2>Test Bölümleri / Prüfungsbereiche</h2>
+  <!-- 4 Buton (Lesen, Schreiben, Hören, Sprechen) -->
+  <div class="buttons">
+    <a class="btn" href="Lesena2.html">Lesen</a>
+    <a class="btn" href="schreibena2.html">Schreiben</a>
+    <a class="btn" href="hörena2.html">Hören</a>
+    <a class="btn" href="sprechena2.html">Sprechen</a>
+  </div>
+
+  <!-- AÇIKLAMA KISMI: Telc A2 Puan Tablosu ve Geçme Notları -->
+  <h3>Açıklama / Erläuterung (Almanca / Türkçe)</h3>
+  <p><strong>Telc A2 Puan Tablosu / Punktetabelle</strong></p>
+  <ul>
+    <li><strong>Hören (Dinleme)</strong>: 3 bölüm (Teil 1, Teil 2, Teil 3), her biri 5 puan = toplam 15 puan</li>
+    <li><strong>Lesen (Okuma)</strong>: 3 bölüm (Teil 1, Teil 2, Teil 3), her biri 5 puan = toplam 15 puan</li>
+    <li><strong>Schreiben (Yazma)</strong>: 2 bölüm 
+      <ul>
+        <li>Teil 1 (Brief): 10 puan</li>
+        <li>Teil 2 (E-Mail): 5 puan</li>
+      </ul>
+      Toplam 15 puan
+    </li>
+    <li><strong>Sprechen (Konuşma)</strong>: 3 bölüm 
+      <ul>
+        <li>Teil 1 (Sich vorstellen): 5 puan</li>
+        <li>Teil 2 (Ein Alltagsgespräch führen): 10 puan</li>
+        <li>Teil 3 (Etwas aushandeln): 6 puan</li>
+      </ul>
+      Toplam 21 puan
+    </li>
+    <li><strong>Gesamtpunktzahl (Toplam Puan):</strong> 60</li>
+  </ul>
+
+  <p><strong>Telc A2 Geçme Notları / Noten</strong></p>
+  <p>
+    <em>Wer erhält ein Zertifikat?</em><br/>
+    Um die Prüfung zu bestehen, müssen die Teilnehmenden 60% der möglichen Höchstpunktzahl erreichen (36 Punkte).<br/>
+    <em>Sınavı geçmek için, katılımcıların maksimum 60 puanın %60'ını, yani 36 puanı alması gerekir.</em>
+  </p>
+  <p>
+    <strong>Noten (Almanca / Türkçe)</strong><br/>
+    • 54–60 Punkte: sehr gut / çok iyi<br/>
+    • 48–53 Punkte: gut / iyi<br/>
+    • 42–47,5 Punkte: befriedigend / tatmin edici<br/>
+    • 36–41,5 Punkte: ausreichend / yeterli<br/>
+    • 0–35,5 Punkte: teilgenommen / (başarısız)
+  </p>
+
+  <!-- Sınav Çözüm Videoları -->
+  <h2>Sınav Çözüm Videoları</h2>
+  <p><em>Video açmak için butona tıklayın.</em></p>
+  <p style="text-align: center;">
+    <button class="btn" onclick="toggleVideo()">Çözüm Videosunu Göster/Gizle</button>
+  </p>
+  <iframe 
+    id="solutionVideo"
+    src="https://drive.google.com/file/d/1_hPTtTSsqtxoOCd2AudZ5VbgZMB3Ai0F/view?usp=drive_link" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+<footer>
+  <p>© 2025 Ayda Dil - Tüm Hakları Saklıdır</p>
+</footer>
+
+<script>
+  // Sınav çözüm videosu için göster/gizle
+  function toggleVideo() {
+    var iframe = document.getElementById("solutionVideo");
+    if (iframe.style.display === "none" || iframe.style.display === "") {
+      iframe.style.display = "block";
+    } else {
+      iframe.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
