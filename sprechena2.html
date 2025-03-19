@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sprechen Bölümü</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 60%;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #000;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .center {
+      text-align: center;
+    }
+    label {
+      display: inline-block;
+      width: 120px;
+      margin-bottom: 8px;
+    }
+    input[type="date"], input[type="time"] {
+      margin-bottom: 10px;
+      padding: 4px;
+    }
+    button {
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>4. Sprechen</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Teil</th>
+        <th>İçerik</th>
+        <th>Süre</th>
+        <th>Puan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Teil 1</td>
+        <td>Sich vorstellen</td>
+        <td>ca. 3 Minuten</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Teil 2</td>
+        <td>Ein Alltagsgespräch führen</td>
+        <td>ca. 4 Minuten</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <td>Teil 3</td>
+        <td>Etwas aushandeln</td>
+        <td>ca. 3 Minuten</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Beschlussfassung der Prüfenden</td>
+        <td colspan="2"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Gesamt</td>
+        <td>ca. 15 Minuten</td>
+        <td></td>
+        <td>60</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Randevu Oluşturma</h2>
+  <p>Randevu oluşturduktan sonra öğretmenlerimiz, belirlediğiniz tarih ve saatte Zoom bağlantı linkini sizinle paylaşacak. Lütfen sınav saatinde hazır olunuz.</p>
+
+  <form action="/randevu" method="POST" onsubmit="return showMessage()">
+    <div>
+      <label for="tarih">Tarih Seçin:</label>
+      <input type="date" id="tarih" name="tarih" required>
+    </div>
+    <div>
+      <label for="saat">Saat Seçin:</label>
+      <input type="time" id="saat" name="saat" required>
+    </div>
+    <button type="submit">Randevu Oluştur</button>
+  </form>
+
+  <script>
+    function showMessage() {
+      alert('Öğretmenlerimiz, belirlediğiniz saatte Zoom linki atacak ve sınava hazır olmanız beklenmektedir. Test bu!');
+      // Formun gerçekten gönderilmesini istiyorsanız "return true;" şeklinde bırakabilirsiniz.
+      // Form gönderilmesin, sadece mesaj gösterilsin isterseniz "return false;" olarak değiştirin.
+      return true;
+    }
+  </script>
+</body>
+</html>
