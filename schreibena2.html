@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Telc A2 Denemesi - Schreiben</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #timer {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #d9534f;
+    }
+    #section1, #section2 {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Geri Sayım Timer -->
+  <div id="timer">20:00</div>
+
+  <!-- 1. Bölüm: Form Doldurma -->
+  <div id="section1">
+    <h2>Form Doldurma (Boşluk Doldurma)</h2>
+    <form id="fillForm">
+      <label for="q1">1. Ich ___ müde. <small>(Doğru cevap: bin)</small></label>
+      <input type="text" id="q1" placeholder="Cevabınızı giriniz">
+      
+      <label for="q2">2. Du ___ ein Buch. <small>(Doğru cevap: hast)</small></label>
+      <input type="text" id="q2" placeholder="Cevabınızı giriniz">
+      
+      <button type="button" onclick="checkAnswers()">Cevapları Kontrol Et</button>
+    </form>
+    <p id="result"></p>
+  </div>
+
+  <!-- 2. Bölüm: Mektup Yazma -->
+  <div id="section2">
+    <h2>Mektup Yazma</h2>
+    <p>Lütfen aşağıdaki alana mektubunuzu yazınız. Yazım tamamlandığında "Mektubu Gönder" butonuna basınız. Mektubunuz, hocalar tarafından kontrol edildikten sonra e-posta ile puanınız bildirilecektir.</p>
+    <textarea id="letter" rows="10" placeholder="Mektubunuzu buraya yazınız..."></textarea>
+    <button type="button" onclick="submitLetter()">Mektubu Gönder</button>
+    <p id="letterResult"></p>
+  </div>
+
+  <script>
+    // 20 dakikalık geri sayım için hedef zamanı ayarla (şu anki zamana 20 dakika ekleyerek)
+    var countDownDate = new Date().getTime() + 20 * 60 * 1000;
+
+    var timerInterval = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+
+      // Dakika ve saniyeyi hesapla
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Timer elemanını güncelle
+      document.getElementById("timer").innerHTML = minutes + "dk " + (seconds < 10 ? "0" + seconds : seconds) + "sn";
+
+      // Süre dolduysa
+      if (distance < 0) {
+        clearInterval(timerInterval);
+        document.getElementById("timer").innerHTML = "Süre doldu!";
+
+        // Form ve mektup gönderme butonlarını devre dışı bırak
+        document.getElementById("fillForm").querySelector("button").disabled = true;
+        document.getElementById("section2").querySelector("button").disabled = true;
+      }
+    }, 1000);
+
+    function checkAnswers() {
+      var answer1 = document.getElementById('q1').value.trim().toLowerCase();
+      var answer2 = document.getElementById('q2').value.trim().toLowerCase();
+
+      var correct1 = 'bin';
+      var correct2 = 'hast';
+
+      var score = 0;
+      var total = 2;
+
+      if(answer1 === correct1) score++;
+      if(answer2 === correct2) score++;
+
+      document.getElementById('result').innerHTML = "Doğru cevap sayınız: " + score + " / " + total;
+    }
+
+    function submitLetter() {
+      var letterContent = document.getElementById('letter').value.trim();
+
+      if(letterContent === "") {
+        alert("Lütfen mektubunuzu yazınız!");
+        return;
+      }
+
+      document.getElementById('letterResult').innerHTML = "Mektubunuz gönderildi. Puanınız en kısa sürede e-posta ile bildirilecektir.";
+    }
+  </script>
+
+</body>
+</html>
