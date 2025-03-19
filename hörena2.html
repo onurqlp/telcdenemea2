@@ -39,6 +39,12 @@
       background: #f4f4f4;
       border: 1px solid #ccc;
     }
+    /* Ana sayfaya dön butonunu sınav sonunda belirgin şekilde yerleştiriyoruz */
+    #returnHome {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
@@ -94,6 +100,9 @@
     <p><strong>Türkçe Cevaplar:</strong> Soru 1: A, Soru 2: B, Soru 3: C</p>
     <p><strong>Almanca Cevaplar:</strong> Frage 1: A, Frage 2: B, Frage 3: C</p>
   </div>
+
+  <!-- Sınav Sonunda Ana Sayfaya Dön Butonu -->
+  <button id="returnHome" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
 
   <!-- YouTube Player (görünmez, yalnızca ses için) -->
   <div id="player"></div>
