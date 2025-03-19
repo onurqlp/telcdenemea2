@@ -80,12 +80,13 @@
       background-color: #007BFF;
       color: #fff;
     }
-    /* Finish Button */
+    /* Finish ve Ana Sayfaya Dön Butonları */
     .finish-container {
       text-align: center;
       margin: 30px 0;
     }
-    .finish-container button {
+    .finish-container button,
+    .finish-container a button {
       padding: 10px 20px;
       font-size: 1.1em;
       border: none;
@@ -93,6 +94,7 @@
       background-color: #28a745;
       color: #fff;
       cursor: pointer;
+      margin: 5px;
     }
     /* Responsive ayarları */
     @media (max-width: 768px) {
@@ -177,9 +179,13 @@
       </div>
     </div>
     
-    <!-- Testi Bitir Butonu -->
+    <!-- Testi Bitir ve Ana Sayfaya Dön Butonları -->
     <div class="finish-container">
       <button id="finishButton">Testi Bitir</button>
+      <!-- Ana Sayfaya Dön butonu başlangıçta gizli -->
+      <a href="index.html" id="homeLink" style="display: none;">
+        <button>Ana Sayfaya Dön</button>
+      </a>
     </div>
   </div>
   
@@ -214,7 +220,7 @@
       });
     });
     
-    // Testi bitir fonksiyonu: cevap anahtarlarını gösterir.
+    // Testi bitir fonksiyonu: cevap anahtarlarını gösterir ve Ana Sayfaya Dön butonunu açığa çıkarır.
     function finishTest() {
       const answerKeys = document.querySelectorAll('.answer-key');
       answerKeys.forEach(key => {
@@ -222,6 +228,8 @@
       });
       clearInterval(timerInterval);
       alert("Test tamamlandı. Cevaplar aşağıdadır.");
+      // Ana Sayfaya Dön butonunu göster
+      document.getElementById("homeLink").style.display = "inline-block";
     }
     
     document.getElementById("finishButton").addEventListener("click", finishTest);
