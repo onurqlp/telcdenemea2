@@ -19,9 +19,6 @@
     th {
       background-color: #f0f0f0;
     }
-    .center {
-      text-align: center;
-    }
     label {
       display: inline-block;
       width: 120px;
@@ -34,6 +31,12 @@
     button {
       padding: 6px 12px;
       cursor: pointer;
+    }
+    /* Ana sayfa butonunun her zaman görünür olması için fixed konumlandırma */
+    .home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
     }
   </style>
 </head>
@@ -96,11 +99,13 @@
     <button type="submit">Randevu Oluştur</button>
   </form>
 
+  <div class="home-button">
+    <button type="button" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+  </div>
+
   <script>
     function showMessage() {
       alert('Öğretmenlerimiz, belirlediğiniz saatte Zoom linki atacak ve sınava hazır olmanız beklenmektedir. Test bu!');
-      // Formun gerçekten gönderilmesini istiyorsanız "return true;" şeklinde bırakabilirsiniz.
-      // Form gönderilmesin, sadece mesaj gösterilsin isterseniz "return false;" olarak değiştirin.
       return true;
     }
   </script>
