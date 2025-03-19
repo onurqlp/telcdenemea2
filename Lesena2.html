@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesen Bölümü</title>
+  <style>
+    /* Genel stil */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    .timer {
+      font-size: 1.2em;
+      color: #d9534f;
+      font-weight: bold;
+    }
+    .section {
+      margin-top: 30px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #fafafa;
+    }
+    .section h2 {
+      margin-top: 0;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    /* Soru ve cevap alanlarının yan yana konumlanması */
+    .question-answer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .question, .answer-key {
+      box-sizing: border-box;
+      padding: 10px;
+      min-width: 300px;
+      width: 48%;
+    }
+    /* Cevap anahtarı başlangıçta gizli */
+    .answer-key {
+      border-left: 1px solid #ddd;
+      display: none;
+    }
+    /* Cevap seçenekleri butonları */
+    .answer-options {
+      margin-top: 15px;
+    }
+    .answer-options button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: 1px solid #007BFF;
+      border-radius: 5px;
+      background-color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .answer-options button.selected {
+      background-color: #007BFF;
+      color: #fff;
+    }
+    /* Finish Button */
+    .finish-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .finish-container button {
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: #fff;
+      cursor: pointer;
+    }
+    /* Responsive ayarları */
+    @media (max-width: 768px) {
+      .question, .answer-key {
+        width: 100%;
+      }
+      .answer-key {
+        border-left: none;
+        border-top: 1px solid #ddd;
+        margin-top: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Lesen Bölümü</h1>
+      <div class="timer" id="timer">30:00</div>
+    </header>
+    
+    <!-- Bölüm 1 -->
+    <div class="section" id="section1">
+      <h2>Bölüm 1</h2>
+      <div class="question-answer-container">
+        <div class="question">
+          <p><strong>Soru 1:</strong> [Soru metni buraya gelecek]</p>
+          <div class="answer-options">
+            <button data-answer="A">A) Seçenek A</button>
+            <button data-answer="B">B) Seçenek B</button>
+            <button data-answer="C">C) Seçenek C</button>
+            <button data-answer="D">D) Seçenek D</button>
+          </div>
+        </div>
+        <div class="answer-key">
+          <p><strong>Cevap:</strong> B</p>
+          <p><strong>Neden (Türkçe):</strong> Doğru cevap B'dir çünkü [açıklama].</p>
+          <p><strong>Begründung (Deutsch):</strong> Die richtige Antwort ist B, weil [Erklärung].</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bölüm 2 -->
+    <div class="section" id="section2">
+      <h2>Bölüm 2</h2>
+      <div class="question-answer-container">
+        <div class="question">
+          <p><strong>Soru 2:</strong> [Soru metni buraya gelecek]</p>
+          <div class="answer-options">
+            <button data-answer="A">A) Seçenek A</button>
+            <button data-answer="B">B) Seçenek B</button>
+            <button data-answer="C">C) Seçenek C</button>
+            <button data-answer="D">D) Seçenek D</button>
+          </div>
+        </div>
+        <div class="answer-key">
+          <p><strong>Cevap:</strong> D</p>
+          <p><strong>Neden (Türkçe):</strong> Doğru cevap D'dir çünkü [açıklama].</p>
+          <p><strong>Begründung (Deutsch):</strong> Die richtige Antwort ist D, weil [Erklärung].</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bölüm 3 -->
+    <div class="section" id="section3">
+      <h2>Bölüm 3</h2>
+      <div class="question-answer-container">
+        <div class="question">
+          <p><strong>Soru 3:</strong> [Soru metni buraya gelecek]</p>
+          <div class="answer-options">
+            <button data-answer="A">A) Seçenek A</button>
+            <button data-answer="B">B) Seçenek B</button>
+            <button data-answer="C">C) Seçenek C</button>
+            <button data-answer="D">D) Seçenek D</button>
+          </div>
+        </div>
+        <div class="answer-key">
+          <p><strong>Cevap:</strong> A</p>
+          <p><strong>Neden (Türkçe):</strong> Doğru cevap A'dır çünkü [açıklama].</p>
+          <p><strong>Begründung (Deutsch):</strong> Die richtige Antwort ist A, weil [Erklärung].</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Testi Bitir Butonu -->
+    <div class="finish-container">
+      <button id="finishButton">Testi Bitir</button>
+    </div>
+  </div>
+  
+  <script>
+    // 30 dakikalık geri sayım sayacı
+    let timeLeft = 30 * 60; // 30 dakika = 1800 saniye
+    const timerElement = document.getElementById('timer');
+    
+    const timerInterval = setInterval(() => {
+      let minutes = Math.floor(timeLeft / 60);
+      let seconds = timeLeft % 60;
+      timerElement.textContent =
+        (minutes < 10 ? '0' + minutes : minutes) + ':' +
+        (seconds < 10 ? '0' + seconds : seconds);
+      timeLeft--;
+      if (timeLeft < 0) {
+        clearInterval(timerInterval);
+        timerElement.textContent = "Süre Bitti";
+        finishTest(); // Süre bitince otomatik olarak testi bitir
+      }
+    }, 1000);
+    
+    // Cevap butonlarına tıklama işlemi: seçimi belirginleştirir.
+    const buttons = document.querySelectorAll('.answer-options button');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Aynı grup içindeki diğer butonlardan seçimi kaldır
+        let siblings = button.parentElement.querySelectorAll('button');
+        siblings.forEach(btn => btn.classList.remove('selected'));
+        // Tıklanan butona seçili sınıfı ekle
+        button.classList.add('selected');
+      });
+    });
+    
+    // Testi bitir fonksiyonu: cevap anahtarlarını gösterir.
+    function finishTest() {
+      const answerKeys = document.querySelectorAll('.answer-key');
+      answerKeys.forEach(key => {
+        key.style.display = "block";
+      });
+      clearInterval(timerInterval);
+      alert("Test tamamlandı. Cevaplar aşağıdadır.");
+    }
+    
+    document.getElementById("finishButton").addEventListener("click", finishTest);
+  </script>
+</body>
+</html>
