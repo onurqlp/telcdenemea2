@@ -1,245 +1,141 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lesen Bölümü</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lesen Teil 1</title>
   <style>
-    /* Genel stil */
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-    }
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-      background: #fff;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #e0e0e0;
-    }
-    .home-button {
-      font-size: 1em;
-      text-decoration: none;
-      color: #007BFF;
-      border: 1px solid #007BFF;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .home-button:hover {
-      background-color: #007BFF;
-      color: #fff;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    .timer {
-      font-size: 1.2em;
-      color: #d9534f;
-      font-weight: bold;
+      margin: 20px;
+      background: #f5f5f5;
     }
     .section {
-      margin-top: 30px;
+      background: #fff;
       padding: 15px;
-      border: 1px solid #ccc;
+      margin-bottom: 30px;
       border-radius: 5px;
-      background: #fafafa;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
-    .section h2 {
+    h2 {
       margin-top: 0;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
     }
-    /* Soru ve cevap alanlarının yan yana konumlanması */
-    .question-answer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
     }
-    .question, .answer-key {
-      box-sizing: border-box;
-      padding: 10px;
-      min-width: 300px;
-      width: 48%;
-    }
-    /* Cevap anahtarı başlangıçta gizli */
-    .answer-key {
-      border-left: 1px solid #ddd;
-      display: none;
-    }
-    /* Cevap seçenekleri butonları */
-    .answer-options {
-      margin-top: 15px;
+    .question p {
+      font-size: 1.1em;
+      margin-bottom: 10px;
     }
     .answer-options button {
       margin: 5px;
-      padding: 10px 15px;
+      padding: 8px 12px;
       border: 1px solid #007BFF;
-      border-radius: 5px;
-      background-color: #fff;
+      border-radius: 4px;
+      background: #fff;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background 0.2s, color 0.2s;
     }
     .answer-options button.selected {
-      background-color: #007BFF;
+      background: #007BFF;
       color: #fff;
     }
-    /* Finish Button */
-    .finish-container {
-      text-align: center;
-      margin: 30px 0;
-    }
-    .finish-container button {
+    #finishBtn {
+      display: inline-block;
+      margin-top: 10px;
       padding: 10px 20px;
-      font-size: 1.1em;
+      font-size: 1em;
+      background: #28a745;
+      color: #fff;
       border: none;
       border-radius: 5px;
-      background-color: #28a745;
-      color: #fff;
       cursor: pointer;
     }
-    /* Responsive ayarları */
-    @media (max-width: 768px) {
-      .question, .answer-key {
-        width: 100%;
-      }
-      .answer-key {
-        border-left: none;
-        border-top: 1px solid #ddd;
-        margin-top: 15px;
-      }
+    #answerKey {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      background: #fafafa;
+      border: 1px solid #ccc;
+    }
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <a href="index.html" class="home-button">Ana Sayfaya Dön</a>
-      <h1>Lesen Bölümü</h1>
-      <div class="timer" id="timer">30:00</div>
-    </header>
-    
-    <!-- Bölüm 1 -->
-    <div class="section" id="section1">
-      <h2>Bölüm 1</h2>
-      <div class="question-answer-container">
-        <div class="question">
-          <p><strong>Soru 1:</strong> [Soru metni buraya gelecek]</p>
-          <div class="answer-options">
-            <button data-answer="A">A) Seçenek A</button>
-            <button data-answer="B">B) Seçenek B</button>
-            <button data-answer="C">C) Seçenek C</button>
-            <button data-answer="D">D) Seçenek D</button>
-          </div>
-        </div>
-        <div class="answer-key">
-          <p><strong>Cevap:</strong> B</p>
-          <p><strong>Neden (Türkçe):</strong> Doğru cevap B'dir çünkü [açıklama].</p>
-          <p><strong>Begründung (Deutsch):</strong> Die richtige Antwort ist B, weil [Erklärung].</p>
-        </div>
+
+  <!-- Bölüm 1 -->
+  <div class="section" id="teil1">
+    <h2>Lesen Teil 1</h2>
+    <!-- sınav resmi -->
+    <img src="https://hizliresim.com/pn4ney3" alt="Lesen Teil 1" />
+
+    <div class="question" data-q="1">
+      <p><strong>1.</strong> Sie brauchen einen Film für Ihre Kamera.</p>
+      <div class="answer-options">
+        <button data-answer="A">A) 2. Stock.</button>
+        <button data-answer="B">B) 3. Stock.</button>
+        <button data-answer="C">C) Anderes Stockwerk.</button>
       </div>
     </div>
-    
-    <!-- Bölüm 2 -->
-    <div class="section" id="section2">
-      <h2>Bölüm 2</h2>
-      <div class="question-answer-container">
-        <div class="question">
-          <p><strong>Soru 2:</strong> [Soru metni buraya gelecek]</p>
-          <div class="answer-options">
-            <button data-answer="A">A) Seçenek A</button>
-            <button data-answer="B">B) Seçenek B</button>
-            <button data-answer="C">C) Seçenek C</button>
-            <button data-answer="D">D) Seçenek D</button>
-          </div>
-        </div>
-        <div class="answer-key">
-          <p><strong>Cevap:</strong> D</p>
-          <p><strong>Neden (Türkçe):</strong> Doğru cevap D'dir çünkü [açıklama].</p>
-          <p><strong>Begründung (Deutsch):</strong> Die richtige Antwort ist D, weil [Erklärung].</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Bölüm 3 -->
-    <div class="section" id="section3">
-      <h2>Bölüm 3</h2>
-      <div class="question-answer-container">
-        <div class="question">
-          <p><strong>Soru 3:</strong> [Soru metni buraya gelecek]</p>
-          <div class="answer-options">
-            <button data-answer="A">A) Seçenek A</button>
-            <button data-answer="B">B) Seçenek B</button>
-            <button data-answer="C">C) Seçenek C</button>
-            <button data-answer="D">D) Seçenek D</button>
-          </div>
-        </div>
-        <div class="answer-key">
-          <p><strong>Cevap:</strong> A</p>
-          <p><strong>Neden (Türkçe):</strong> Doğru cevap A'dır çünkü [açıklama].</p>
-          <p><strong>Begründung (Deutsch):</strong> Die richtige Antwort ist A, weil [Erklärung].</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Testi Bitir Butonu -->
-    <div class="finish-container">
-      <button id="finishButton">Testi Bitir</button>
-    </div>
+
+    <button id="finishBtn">Testi Bitir</button>
+    <div id="result"></div>
   </div>
-  
+
+  <!-- Bölüm 2 (boş) -->
+  <div class="section" id="teil2">
+    <h2>Lesen Teil 2</h2>
+    <!-- ileride eklenecek -->
+  </div>
+
+  <!-- Bölüm 3 (boş) -->
+  <div class="section" id="teil3">
+    <h2>Lesen Teil 3</h2>
+    <!-- ileride eklenecek -->
+  </div>
+
+  <!-- Cevap anahtarı -->
+  <div id="answerKey">
+    <h3>Antwortschlüssel</h3>
+    <p>1: B, 2: C, 3: A, 4: B, 5: A</p>
+  </div>
+
   <script>
-    // 30 dakikalık geri sayım sayacı
-    let timeLeft = 30 * 60; // 30 dakika = 1800 saniye
-    const timerElement = document.getElementById('timer');
-    
-    const timerInterval = setInterval(() => {
-      let minutes = Math.floor(timeLeft / 60);
-      let seconds = timeLeft % 60;
-      timerElement.textContent =
-        (minutes < 10 ? '0' + minutes : minutes) + ':' +
-        (seconds < 10 ? '0' + seconds : seconds);
-      timeLeft--;
-      if (timeLeft < 0) {
-        clearInterval(timerInterval);
-        timerElement.textContent = "Süre Bitti";
-        finishTest(); // Süre bitince otomatik olarak testi bitir
-      }
-    }, 1000);
-    
-    // Cevap butonlarına tıklama işlemi: seçimi belirginleştirir.
-    const buttons = document.querySelectorAll('.answer-options button');
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Aynı grup içindeki diğer butonlardan seçimi kaldır
-        let siblings = button.parentElement.querySelectorAll('button');
-        siblings.forEach(btn => btn.classList.remove('selected'));
-        // Tıklanan butona seçili sınıfı ekle
-        button.classList.add('selected');
+    // tüm soruların anahtarı
+    const answerKey = {1:'B',2:'C',3:'A',4:'B',5:'A'};
+    let selected = null;
+
+    // şık seçimi
+    document.querySelectorAll('.answer-options button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.answer-options button')
+          .forEach(b=> b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selected = btn.getAttribute('data-answer');
       });
     });
-    
-    // Testi bitir fonksiyonu: cevap anahtarlarını gösterir.
-    function finishTest() {
-      const answerKeys = document.querySelectorAll('.answer-key');
-      answerKeys.forEach(key => {
-        key.style.display = "block";
-      });
-      clearInterval(timerInterval);
-      alert("Test tamamlandı. Cevaplar aşağıdadır.");
-    }
-    
-    document.getElementById("finishButton").addEventListener("click", finishTest);
+
+    // testi bitir butonu
+    document.getElementById('finishBtn').addEventListener('click', () => {
+      const resEl = document.getElementById('result');
+      if (!selected) {
+        resEl.textContent = 'Lütfen bir şık seçin.';
+        return;
+      }
+      if (selected === answerKey[1]) {
+        resEl.textContent = 'Frage 1: Richtig!';
+      } else {
+        resEl.textContent = 'Frage 1: Falsch. Richtige Antwort ist B.';
+      }
+      // anahtarı göster
+      document.getElementById('answerKey').style.display = 'block';
+    });
   </script>
 </body>
 </html>
- 
