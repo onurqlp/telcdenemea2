@@ -12,8 +12,6 @@
     h2 { margin-top: 0; }
     .content-row { display: flex; flex-wrap: wrap; gap: 20px; }
     .question-column { flex: 1 1 60%; min-width: 280px; }
-    .image-column { flex: 1 1 35%; display: flex; align-items: center; justify-content: center; }
-    .image-column img { width: 100%; max-width: 400px; height: auto; border: 1px solid #ddd; border-radius: 5px; }
     .question { margin-bottom: 20px; }
     .question p { font-size: 1.1em; margin-bottom: 8px; }
     .answer-options input[type="text"], .answer-options button { font-size: 1em; padding: 8px 12px; margin-top: 5px; }
@@ -37,73 +35,66 @@
 <div id="ytContainer" style="display:none;"></div>
 <button id="replayBtn" style="display:none;">Tekrar Dinle</button>
 
-<!-- Tüm test içerikleri görünür olacak şekilde baştan göster -->
+<!-- Teil 1 -->
 <div class="section test-content" id="teil1">
   <h2>Teil 1 – Lückentext</h2>
-  <div class="content-row">
-    <div class="question-column">
-      <div class="question" data-q="1"><p>1. Frage</p><div class="answer-options"><input type="text"></div></div>
-      <div class="question" data-q="2"><p>2. Frage</p><div class="answer-options"><input type="text"></div></div>
-      <div class="question" data-q="3"><p>3. Frage</p><div class="answer-options"><input type="text"></div></div>
-      <div class="question" data-q="4"><p>4. Frage</p><div class="answer-options"><input type="text"></div></div>
-      <div class="question" data-q="5"><p>5. Frage</p><div class="answer-options"><input type="text"></div></div>
-    </div>
-    <div class="image-column">
-      <img src="images/4.png" alt="Hören Teil 1" />
-    </div>
+  <div class="question-column">
+    <div class="question" data-q="1"><p>1. Frage: Wo arbeitet Peter?</p><div class="answer-options"><input type="text"></div></div>
+    <div class="question" data-q="2"><p>2. Frage: Wann fährt er los?</p><div class="answer-options"><input type="text"></div></div>
+    <div class="question" data-q="3"><p>3. Frage: Mit wem geht er?</p><div class="answer-options"><input type="text"></div></div>
+    <div class="question" data-q="4"><p>4. Frage: Wohin fährt er?</p><div class="answer-options"><input type="text"></div></div>
+    <div class="question" data-q="5"><p>5. Frage: Was bringt er mit?</p><div class="answer-options"><input type="text"></div></div>
   </div>
 </div>
 
+<!-- Teil 2 -->
 <div class="section test-content" id="teil2">
   <h2>Teil 2 – A, B, C</h2>
-  <div class="content-row">
-    <div class="question-column">
-      <div class="question" data-q="6"><p>6. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-      <div class="question" data-q="7"><p>7. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-      <div class="question" data-q="8"><p>8. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-      <div class="question" data-q="9"><p>9. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-      <div class="question" data-q="10"><p>10. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-    </div>
-    <div class="image-column">
-      <img src="images/4.png" alt="Hören Teil 2" />
-    </div>
+  <div class="question-column">
+    <div class="question" data-q="6"><p>6. Frage: Was hört man?</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+    <div class="question" data-q="7"><p>7. Frage: Was wird gesagt?</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+    <div class="question" data-q="8"><p>8. Frage: Wie ist das Wetter?</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+    <div class="question" data-q="9"><p>9. Frage: Was machen sie?</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+    <div class="question" data-q="10"><p>10. Frage: Wer kommt zu Besuch?</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
   </div>
 </div>
 
+<!-- Teil 3 -->
 <div class="section test-content" id="teil3">
-  <h2>Teil 3 – A bis I</h2>
-  <div class="content-row">
-    <div class="question-column">
-      <div class="question" data-q="11"><p>11. Frage</p><div class="answer-options">
-        <button>A</button><button>B</button><button>C</button><button>D</button>
-        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-      </div></div>
-      <div class="question" data-q="12"><p>12. Frage</p><div class="answer-options">
-        <button>A</button><button>B</button><button>C</button><button>D</button>
-        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-      </div></div>
-      <div class="question" data-q="13"><p>13. Frage</p><div class="answer-options">
-        <button>A</button><button>B</button><button>C</button><button>D</button>
-        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-      </div></div>
-      <div class="question" data-q="14"><p>14. Frage</p><div class="answer-options">
-        <button>A</button><button>B</button><button>C</button><button>D</button>
-        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-      </div></div>
-      <div class="question" data-q="15"><p>15. Frage</p><div class="answer-options">
-        <button>A</button><button>B</button><button>C</button><button>D</button>
-        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-      </div></div>
-    </div>
-    <div class="image-column">
-      <img src="images/4.png" alt="Hören Teil 3" />
-    </div>
-  </div>
+  <h2>Teil 3 – Was passt?</h2>
+  <p>Sie hören ein Gespräch. Zu diesem Gespräch gibt es fünf Aufgaben. Ordnen Sie zu und notieren Sie den Buchstaben.<br>Sie hören das Gespräch zweimal.</p>
+  <ul>
+    <li><strong>A</strong> macht Hähnchen mit Reis.</li>
+    <li><strong>B</strong> holt die Getränke.</li>
+    <li><strong>C</strong> bringt ein Spiel mit.</li>
+    <li><strong>D</strong> bringt Schweinefleisch mit.</li>
+    <li><strong>E</strong> macht einen Kuchen.</li>
+    <li><strong>F</strong> kocht eine Gemüsesuppe.</li>
+    <li><strong>G</strong> bringt einen Nudelsalat mit.</li>
+    <li><strong>H</strong> bringt CDs mit.</li>
+    <li><strong>I</strong> macht Musik.</li>
+  </ul>
+  <div class="question" data-q="11"><p>Susanne</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="12"><p>Rainer</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="13"><p>Martin</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="14"><p>Nicole</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="15"><p>Frau Lang</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
 </div>
 
-<div id="finishSection" class="section test-content" style="display:none;">
-  <button id="finishBtn">Testi Bitir</button>
+<div id="finishSection" class="section test-content">
+  <h2>Test Sonuçları</h2>
   <div id="score"></div>
+  <button id="finishBtn">Testi Bitir</button>
   <button id="restartBtn">Yeniden Başlat</button>
   <a href="index.html" id="homeBtn">Ana Ekrana Dön</a>
 </div>
@@ -121,12 +112,6 @@
 
   let timeLeft = 25 * 60;
   let interval;
-
-  const correctAnswers = {
-    1: "arbeit", 2: "morgen", 3: "freund", 4: "schule", 5: "essen",
-    6: "B", 7: "C", 8: "A", 9: "C", 10: "B",
-    11: "D", 12: "G", 13: "A", 14: "H", 15: "F"
-  };
 
   function startTimer() {
     timerEl.style.display = "block";
@@ -151,15 +136,29 @@
 
   function startTest() {
     startSection.style.display = "none";
-    document.getElementById("teil1").style.display = "block";
-    document.getElementById("teil2").style.display = "block";
-    document.getElementById("teil3").style.display = "block";
     replayBtn.style.display = "inline-block";
     embedYouTubeAudio();
     startTimer();
   }
 
-  function calculateScore() {
+  function showResults() {
+    const correctAnswers = {
+      1: "supermarkt",
+      2: "7 uhr",
+      3: "freundin",
+      4: "schule",
+      5: "kuchen",
+      6: "B",
+      7: "C",
+      8: "A",
+      9: "C",
+      10: "B",
+      11: "G",
+      12: "B",
+      13: "F",
+      14: "H",
+      15: "E"
+    };
     let correctCount = 0;
     document.querySelectorAll(".question").forEach(q => {
       const qNum = q.getAttribute("data-q");
@@ -180,12 +179,7 @@
         }
       });
     });
-    return correctCount;
-  }
-
-  function showResults() {
-    const score = calculateScore();
-    scoreEl.textContent = `Doğru Sayısı: ${score} / 15`;
+    scoreEl.textContent = `Doğru Sayısı: ${correctCount} / 15`;
     finishSection.style.display = "block";
     window.scrollTo({ top: finishSection.offsetTop, behavior: 'smooth' });
   }
