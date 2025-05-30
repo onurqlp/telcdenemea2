@@ -35,16 +35,15 @@
     }
     .content-row {
       display: flex;
-      flex-wrap: nowrap;
-      align-items: flex-start;
-      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 40px;
     }
     .question-column {
       flex: 1 1 60%;
+      min-width: 280px;
     }
     .image-column {
-      flex: 1 1 40%;
+      flex: 1 1 35%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -135,6 +134,7 @@
   <button id="startBtn">Testi Başlat</button>
 </div>
 
+<!-- Teil 1 -->
 <div class="section test-content" style="display:none;">
   <h2>Lesen Teil 1 – A, B, C</h2>
   <div class="content-row">
@@ -146,11 +146,61 @@
       <div class="question" data-q="5"><p>5. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
     </div>
     <div class="image-column">
-      <img src="images/9851245d-34e0-4027-8f8b-67f24bc6cead.png" alt="Hausarbeiten" />
+      <img src="images/4.png" alt="Lesen Teil 1" />
     </div>
   </div>
 </div>
 
+<!-- Teil 2 -->
+<div class="section test-content" style="display:none;">
+  <h2>Lesen Teil 2 – Richtig / Falsch</h2>
+  <div class="content-row">
+    <div class="question-column">
+      <div class="question" data-q="6"><p>6. Frage</p><div class="answer-options"><button>Richtig</button><button>Falsch</button></div></div>
+      <div class="question" data-q="7"><p>7. Frage</p><div class="answer-options"><button>Richtig</button><button>Falsch</button></div></div>
+      <div class="question" data-q="8"><p>8. Frage</p><div class="answer-options"><button>Richtig</button><button>Falsch</button></div></div>
+      <div class="question" data-q="9"><p>9. Frage</p><div class="answer-options"><button>Richtig</button><button>Falsch</button></div></div>
+      <div class="question" data-q="10"><p>10. Frage</p><div class="answer-options"><button>Richtig</button><button>Falsch</button></div></div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Lesen Teil 2" />
+    </div>
+  </div>
+</div>
+
+<!-- Teil 3 -->
+<div class="section test-content" style="display:none;">
+  <h2>Lesen Teil 3 – A bis H</h2>
+  <div class="content-row">
+    <div class="question-column">
+      <div class="question" data-q="11"><p>11. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button>
+      </div></div>
+      <div class="question" data-q="12"><p>12. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button>
+      </div></div>
+      <div class="question" data-q="13"><p>13. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button>
+      </div></div>
+      <div class="question" data-q="14"><p>14. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button>
+      </div></div>
+      <div class="question" data-q="15"><p>15. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button>
+      </div></div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Lesen Teil 3" />
+    </div>
+  </div>
+</div>
+
+<!-- Sonuç -->
 <div id="finishSection" class="section test-content" style="display:none;">
   <button id="finishBtn">Testi Bitir</button>
   <div id="score"></div>
@@ -169,7 +219,9 @@
   let interval;
 
   const correctAnswers = {
-    1: 'B', 2: 'A', 3: 'C', 4: 'B', 5: 'A'
+    1: 'B', 2: 'A', 3: 'C', 4: 'B', 5: 'A',
+    6: 'Richtig', 7: 'Falsch', 8: 'Richtig', 9: 'Falsch', 10: 'Richtig',
+    11: 'D', 12: 'E', 13: 'A', 14: 'F', 15: 'C'
   };
 
   function startTimer() {
@@ -213,7 +265,7 @@
 
   function showResults() {
     const score = calculateScore();
-    scoreEl.textContent = `Doğru Sayısı: ${score} / 5`;
+    scoreEl.textContent = `Doğru Sayısı: ${score} / 15`;
     finishSection.style.display = "block";
     window.scrollTo({ top: finishSection.offsetTop, behavior: 'smooth' });
   }
