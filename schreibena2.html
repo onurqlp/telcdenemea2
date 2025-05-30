@@ -73,6 +73,7 @@
       text-align: center;
       background-color: #fff;
       padding: 1rem 0;
+      display: none;
     }
 
     .image-column img {
@@ -89,7 +90,7 @@
     <h1>Telc A2 Schreiben</h1>
   </header>
 
-  <div class="image-column">
+  <div class="image-column" id="imageColumn">
     <img src="images/4.png" alt="Lesen Teil 1" />
   </div>
 
@@ -110,10 +111,13 @@
 
     function startTest() {
       const iframe = document.getElementById('formFrame');
-      const formUrl = "https://forms.gle/fuvua4FoiDDbNqpj8";
+      const imageColumn = document.getElementById('imageColumn');
+      const formUrl = "https://forms.gle/WyHBU6g89bUQiuT29";
 
       iframe.src = formUrl;
       iframe.style.display = 'block';
+      imageColumn.style.display = 'block';
+
       startTimer();
     }
 
