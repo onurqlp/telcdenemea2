@@ -1,184 +1,122 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Telc A2 Denemesi - Schreiben</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telc A2 Schreiben</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
-      padding-top: 70px; /* Fixed header için boşluk */
-    }
-    /* Fixed Header: Ana Sayfaya Dön Butonu */
-    #header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #fff;
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-      text-align: center;
-      z-index: 1000;
-    }
-    #timer {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 20px;
-      color: #d9534f;
-    }
-    #section1, #section2 {
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 5px;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+      padding: 0;
       box-sizing: border-box;
     }
-    button {
-      margin-top: 15px;
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f7f7;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #234078;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 1rem auto;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    #timer {
+      font-size: 1.5rem;
+      color: #d9534f;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      background-color: #234078;
+      color: white;
       padding: 10px 20px;
       font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px;
     }
-    #annotatedLetter {
-      background-color: #f1f1f1;
-      padding: 15px;
-      margin-top: 15px;
-      border-radius: 5px;
+
+    .button:hover {
+      background-color: #1a2f5c;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      margin-top: 20px;
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Fixed Header: Ana Sayfaya Dön Butonu -->
-  <div id="header">
-    <button type="button" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+  <header>
+    <h1>Telc A2 Schreiben</h1>
+  </header>
+
+  <div class="container">
+    <div id="timer">20:00</div>
+    <button class="button" onclick="startTest()">Teste Başla</button>
+    <button class="button" onclick="finishTest()"> Ana Sayfaya Dön</button>
+    <iframe id="formFrame" src=""></iframe>
   </div>
 
-  <!-- Geri Sayım Timer -->
-  <div id="timer">20:00</div>
-
-  <!-- 1. Bölüm: Form Doldurma -->
-  <div id="section1">
-    <h2>Form Doldurma (Boşluk Doldurma)</h2>
-    <form id="fillForm">
-      <label for="q1">1. Ich ___ müde. <small>(Doğru cevap: bin)</small></label>
-      <input type="text" id="q1" placeholder="Cevabınızı giriniz">
-      
-      <label for="q2">2. Du ___ ein Buch. <small>(Doğru cevap: hast)</small></label>
-      <input type="text" id="q2" placeholder="Cevabınızı giriniz">
-      
-      <button type="button" onclick="checkAnswers()">Cevapları Kontrol Et</button>
-    </form>
-    <p id="result"></p>
-  </div>
-
-  <!-- 2. Bölüm: Mektup Yazma -->
-  <div id="section2">
-    <h2>Mektup Yazma</h2>
-    <p>
-      Lütfen aşağıdaki alana mektubunuzu yazınız. Yazım tamamlandığında "Mektubu Gönder" butonuna basınız.
-      Mektubunuz, hocalar tarafından kontrol edildikten sonra e-posta ile puanınız bildirilecektir.
-    </p>
-    <textarea id="letter" rows="10" placeholder="Mektubunuzu buraya yazınız..."></textarea>
-    <button type="button" onclick="submitLetter()">Mektubu Gönder</button>
-    <p id="letterResult"></p>
-    <!-- Düzeltme sonrası metnin gösterileceği alan -->
-    <div id="annotatedLetter"></div>
-  </div>
+  <footer>
+    © 2025 AYDA Akademi – Tüm hakları saklıdır.
+  </footer>
 
   <script>
-    // 20 dakikalık geri sayım için hedef zamanı ayarla
-    var countDownDate = new Date().getTime() + 20 * 60 * 1000;
-    var timerInterval = setInterval(function() {
-      var now = new Date().getTime();
-      var distance = countDownDate - now;
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("timer").innerHTML = minutes + "dk " + (seconds < 10 ? "0" + seconds : seconds) + "sn";
-      if (distance < 0) {
-        clearInterval(timerInterval);
-        document.getElementById("timer").innerHTML = "Süre doldu!";
-        document.getElementById("fillForm").querySelector("button").disabled = true;
-        document.getElementById("section2").querySelector("button").disabled = true;
-      }
-    }, 1000);
+    let countdown;
+    let timeLeft = 20 * 60; // 20 dakika
 
-    function checkAnswers() {
-      var answer1 = document.getElementById('q1').value.trim().toLowerCase();
-      var answer2 = document.getElementById('q2').value.trim().toLowerCase();
-      var correct1 = 'bin';
-      var correct2 = 'hast';
-      var score = 0;
-      var total = 2;
-      if(answer1 === correct1) score++;
-      if(answer2 === correct2) score++;
-      document.getElementById('result').innerHTML = "Doğru cevap sayınız: " + score + " / " + total;
+    function startTest() {
+      const iframe = document.getElementById('formFrame');
+      const formUrl = "https://forms.gle/fuvua4FoiDDbNqpj8";
+
+      iframe.src = formUrl;
+      iframe.style.display = 'block';
+      startTimer();
     }
 
-    // LanguageTool API ile gramer kontrolü yapar
-    function checkGrammar(text) {
-      return fetch('https://api.languagetool.org/v2/check', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'text=' + encodeURIComponent(text) + '&language=de-DE'
-      })
-      .then(response => response.json());
+    function startTimer() {
+      countdown = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          document.getElementById("timer").innerText = "Süre doldu!";
+          alert("Süre doldu! Testi bitirip ana sayfaya dönebilirsiniz.");
+        } else {
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          document.getElementById("timer").innerText =
+            `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+          timeLeft--;
+        }
+      }, 1000);
     }
 
-    function submitLetter() {
-      var letterContent = document.getElementById('letter').value.trim();
-      var letterResult = document.getElementById('letterResult');
-      var annotatedDiv = document.getElementById('annotatedLetter');
-
-      if(letterContent === "") {
-        alert("Lütfen mektubunuzu yazınız!");
-        return;
-      }
-
-      // Gramer kontrolü yap
-      checkGrammar(letterContent)
-        .then(result => {
-          if(result.matches && result.matches.length > 0) {
-            // Hataları işlemek için metni parçalara ayırıyoruz
-            var annotatedText = "";
-            var lastIndex = 0;
-            var matches = result.matches.sort((a, b) => a.offset - b.offset);
-            matches.forEach(match => {
-              // Hata öncesi kısmı ekle
-              annotatedText += letterContent.substring(lastIndex, match.offset);
-              // Hatalı kısım
-              var errorText = letterContent.substr(match.offset, match.length);
-              // Öneri varsa ilk öneriyi al, yoksa hatalı metni koru
-              var suggestion = (match.replacements && match.replacements.length > 0) ? match.replacements[0].value : errorText;
-              // Hatalı kısmı üstü çizili, öneriyi de altı çizili olarak ekle
-              annotatedText += "<del style='color:red; text-decoration:line-through;'>" + errorText + "</del>" +
-                               "<ins style='color:green;'>" + suggestion + "</ins>";
-              lastIndex = match.offset + match.length;
-            });
-            // Son kısım
-            annotatedText += letterContent.substring(lastIndex);
-            annotatedDiv.innerHTML = "<p>Gramer hataları tespit edildi. Düzeltilmiş metin:</p><p>" + annotatedText + "</p>";
-            letterResult.innerHTML = "Lütfen düzeltilmiş metni gözden geçirin.";
-          } else {
-            annotatedDiv.innerHTML = "<p>Gramer hatası bulunamadı.</p><p>" + letterContent + "</p>";
-            letterResult.innerHTML = "Mektubunuz gönderildi. Puanınız en kısa sürede e-posta ile bildirilecektir.";
-          }
-        })
-        .catch(error => {
-          console.error("Gramer kontrol hatası:", error);
-          letterResult.innerHTML = "Gramer kontrolü yapılamadı. Lütfen daha sonra tekrar deneyin.";
-        });
+    function finishTest() {
+      window.location.href = "index.html"; // Ana sayfa linki
     }
   </script>
 
