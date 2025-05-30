@@ -5,90 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Telc A2 Hören</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f5f5f5;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-    #timer {
-      text-align: center;
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #d9534f;
-      margin-bottom: 20px;
-    }
-    .section {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 40px;
-      border-radius: 5px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-top: 0;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    .question p {
-      font-size: 1.1em;
-      margin-bottom: 8px;
-    }
-    .answer-options input[type="text"],
-    .answer-options button {
-      font-size: 1em;
-      padding: 8px 12px;
-      margin-top: 5px;
-    }
-    .answer-options button {
-      margin-right: 6px;
-      background: #234078;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .answer-options button.selected {
-      outline: 2px solid #234078;
-      background: #fff;
-      color: #234078;
-    }
-    .answer-options button.correct {
-      background: #28a745;
-    }
-    .answer-options button.incorrect {
-      background: #dc3545;
-    }
-    #startSection {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    #startBtn, #finishBtn, #restartBtn, #homeBtn {
-      font-size: 1.2em;
-      padding: 12px 25px;
-      background: #234078;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin: 10px 5px;
-    }
-    #finishSection {
-      text-align: center;
-      margin-top: 20px;
-    }
-    #score {
-      font-size: 1.3em;
-      font-weight: bold;
-      color: #333;
-      margin-top: 20px;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+    h1 { text-align: center; font-size: 2em; margin-bottom: 10px; }
+    #timer { text-align: center; font-size: 1.5em; font-weight: bold; color: #d9534f; margin-bottom: 20px; }
+    .section { background: #fff; padding: 20px; margin-bottom: 40px; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    h2 { margin-top: 0; }
+    .content-row { display: flex; flex-wrap: wrap; gap: 20px; }
+    .question-column { flex: 1 1 60%; min-width: 280px; }
+    .image-column { flex: 1 1 35%; display: flex; align-items: center; justify-content: center; }
+    .image-column img { width: 100%; max-width: 400px; height: auto; border: 1px solid #ddd; border-radius: 5px; }
+    .question { margin-bottom: 20px; }
+    .question p { font-size: 1.1em; margin-bottom: 8px; }
+    .answer-options input[type="text"], .answer-options button { font-size: 1em; padding: 8px 12px; margin-top: 5px; }
+    .answer-options button { margin-right: 6px; background: #234078; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+    .answer-options button.selected { outline: 2px solid #234078; background: #fff; color: #234078; }
+    .answer-options button.correct { background: #28a745; }
+    .answer-options button.incorrect { background: #dc3545; }
+    #startSection { text-align: center; margin-bottom: 30px; }
+    #startBtn, #finishBtn, #restartBtn, #homeBtn, #replayBtn { font-size: 1.2em; padding: 12px 25px; background: #234078; color: #fff; border: none; border-radius: 8px; cursor: pointer; margin: 10px 5px; }
+    #finishSection { text-align: center; margin-top: 20px; }
+    #score { font-size: 1.3em; font-weight: bold; color: #333; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -98,68 +34,100 @@
   <h2>Hören Prüfung</h2>
   <button id="startBtn">Testi Başlat</button>
 </div>
-<audio id="audio" src="https://www.youtube.com/watch?v=C_6iZMeK3N8&list=PLn-uCYuRwC-c_jnL1tkpi-N7W9QWvUpUA" type="audio/mp3" style="display:none;"></audio>
+<audio id="audio" preload="auto" style="display:none;"></audio>
+<button id="replayBtn" style="display:none;">Tekrar Dinle</button>
+
 <div class="section test-content" style="display:none;">
   <h2>Teil 1 – Lückentext</h2>
-  <div class="question" data-q="1"><p>1. Frage</p><div class="answer-options"><input type="text"></div></div>
-  <div class="question" data-q="2"><p>2. Frage</p><div class="answer-options"><input type="text"></div></div>
-  <div class="question" data-q="3"><p>3. Frage</p><div class="answer-options"><input type="text"></div></div>
-  <div class="question" data-q="4"><p>4. Frage</p><div class="answer-options"><input type="text"></div></div>
-  <div class="question" data-q="5"><p>5. Frage</p><div class="answer-options"><input type="text"></div></div>
+  <div class="content-row">
+    <div class="question-column">
+      <div class="question" data-q="1"><p>1. Frage</p><div class="answer-options"><input type="text"></div></div>
+      <div class="question" data-q="2"><p>2. Frage</p><div class="answer-options"><input type="text"></div></div>
+      <div class="question" data-q="3"><p>3. Frage</p><div class="answer-options"><input type="text"></div></div>
+      <div class="question" data-q="4"><p>4. Frage</p><div class="answer-options"><input type="text"></div></div>
+      <div class="question" data-q="5"><p>5. Frage</p><div class="answer-options"><input type="text"></div></div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Hören Teil 1" />
+    </div>
+  </div>
 </div>
+
 <div class="section test-content" style="display:none;">
   <h2>Teil 2 – A, B, C</h2>
-  <div class="question" data-q="6"><p>6. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-  <div class="question" data-q="7"><p>7. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-  <div class="question" data-q="8"><p>8. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-  <div class="question" data-q="9"><p>9. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-  <div class="question" data-q="10"><p>10. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="content-row">
+    <div class="question-column">
+      <div class="question" data-q="6"><p>6. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="7"><p>7. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="8"><p>8. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="9"><p>9. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="10"><p>10. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Hören Teil 2" />
+    </div>
+  </div>
 </div>
+
 <div class="section test-content" style="display:none;">
   <h2>Teil 3 – A bis I</h2>
-  <div class="question" data-q="11"><p>11. Frage</p><div class="answer-options">
-    <button>A</button><button>B</button><button>C</button><button>D</button>
-    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-  </div></div>
-  <div class="question" data-q="12"><p>12. Frage</p><div class="answer-options">
-    <button>A</button><button>B</button><button>C</button><button>D</button>
-    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-  </div></div>
-  <div class="question" data-q="13"><p>13. Frage</p><div class="answer-options">
-    <button>A</button><button>B</button><button>C</button><button>D</button>
-    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-  </div></div>
-  <div class="question" data-q="14"><p>14. Frage</p><div class="answer-options">
-    <button>A</button><button>B</button><button>C</button><button>D</button>
-    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-  </div></div>
-  <div class="question" data-q="15"><p>15. Frage</p><div class="answer-options">
-    <button>A</button><button>B</button><button>C</button><button>D</button>
-    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
-  </div></div>
+  <div class="content-row">
+    <div class="question-column">
+      <div class="question" data-q="11"><p>11. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+      </div></div>
+      <div class="question" data-q="12"><p>12. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+      </div></div>
+      <div class="question" data-q="13"><p>13. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+      </div></div>
+      <div class="question" data-q="14"><p>14. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+      </div></div>
+      <div class="question" data-q="15"><p>15. Frage</p><div class="answer-options">
+        <button>A</button><button>B</button><button>C</button><button>D</button>
+        <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+      </div></div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Hören Teil 3" />
+    </div>
+  </div>
 </div>
+
 <div id="finishSection" class="section test-content" style="display:none;">
   <button id="finishBtn">Testi Bitir</button>
   <div id="score"></div>
   <button id="restartBtn">Yeniden Başlat</button>
   <a href="index.html" id="homeBtn">Ana Ekrana Dön</a>
 </div>
+
 <script>
   const startBtn = document.getElementById("startBtn");
-  const audio = document.getElementById("audio");
   const finishBtn = document.getElementById("finishBtn");
   const restartBtn = document.getElementById("restartBtn");
   const timerEl = document.getElementById("timer");
   const startSection = document.getElementById("startSection");
   const finishSection = document.getElementById("finishSection");
   const scoreEl = document.getElementById("score");
+  const replayBtn = document.getElementById("replayBtn");
+  const audio = document.getElementById("audio");
+
   let timeLeft = 25 * 60;
   let interval;
+  const audioURL = "https://dl.dropboxusercontent.com/scl/fi/z9d12anvv1jlxeh6fg4n7/sample.mp3?rlkey=1i9sx9p8ndrg4klqg2kfj2j5o&dl=0";
+
   const correctAnswers = {
     1: "arbeit", 2: "morgen", 3: "freund", 4: "schule", 5: "essen",
     6: "B", 7: "C", 8: "A", 9: "C", 10: "B",
     11: "D", 12: "G", 13: "A", 14: "H", 15: "F"
   };
+
   function startTimer() {
     timerEl.style.display = "block";
     interval = setInterval(() => {
@@ -170,12 +138,16 @@
       if (timeLeft < 0) clearInterval(interval);
     }, 1000);
   }
+
   function startTest() {
     document.querySelectorAll(".test-content").forEach(sec => sec.style.display = "block");
     startSection.style.display = "none";
+    replayBtn.style.display = "inline-block";
+    audio.src = audioURL;
     audio.play();
     startTimer();
   }
+
   function calculateScore() {
     let correctCount = 0;
     document.querySelectorAll(".question").forEach(q => {
@@ -199,18 +171,25 @@
     });
     return correctCount;
   }
+
   function showResults() {
     const score = calculateScore();
     scoreEl.textContent = `Doğru Sayısı: ${score} / 15`;
     finishSection.style.display = "block";
     window.scrollTo({ top: finishSection.offsetTop, behavior: 'smooth' });
   }
+
   function restartTest() {
     location.reload();
   }
+
   startBtn.addEventListener("click", startTest);
   finishBtn.addEventListener("click", showResults);
   restartBtn.addEventListener("click", restartTest);
+  replayBtn.addEventListener("click", () => {
+    audio.currentTime = 0;
+    audio.play();
+  });
   document.body.addEventListener("click", e => {
     if (e.target.tagName === "BUTTON" && e.target.closest('.answer-options')) {
       const parent = e.target.closest(".answer-options");
