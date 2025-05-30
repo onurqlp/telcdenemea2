@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>telc A2 Deneme Sınavı</title>
   <style>
-    /* Temel sıfırlama ve font ayarları */
     * {
       margin: 0; 
       padding: 0;
@@ -13,59 +12,60 @@
     }
     body {
       font-family: Arial, sans-serif;
-      background: #e8f7f7;
+      background: #2b4b87; /* Logo rengine uyumlu */
       color: #333;
       margin: 0;
     }
     header, footer {
-      background-color: #3B5998; /* Facebook mavisi */
+      background-color: #2b4b87;
       color: #fff;
       text-align: center;
       padding: 1rem;
     }
     .logo {
-      max-width: 300px;
+      max-width: 350px;
+      width: 100%;
       height: auto;
+      margin-bottom: 10px;
     }
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 1rem auto;
       background: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     h1, h2 {
       text-align: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.7rem;
     }
     p {
       margin: 0.5rem 0;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       justify-content: center;
       margin: 1rem 0;
     }
     .btn {
-      background-color: #3B5998;
+      background-color: #2b4b87;
       color: #fff;
       padding: 0.8rem 1.2rem;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 1rem;
-      transition: background-color 0.3s ease;
       text-decoration: none;
       text-align: center;
+      transition: background-color 0.3s ease;
     }
     .btn:hover {
-      background-color: #2f477a; /* Biraz daha koyu ton */
+      background-color: #1e355e;
     }
-    /* Dört dil için tablo */
     table.multilang {
       width: 100%;
       border-collapse: collapse;
@@ -75,22 +75,26 @@
     table.multilang td {
       border: 1px solid #ccc;
       vertical-align: top;
-      padding: 0.5rem;
+      padding: 0.6rem;
+      text-align: left;
     }
     iframe {
       width: 100%;
       min-height: 400px;
-      border: 2px solid #3B5998;
+      border: 2px solid #2b4b87;
       margin-top: 1rem;
-      display: none; /* Başlangıçta gizli */
+      display: none;
     }
-    /* Responsive */
-    @media (max-width: 600px) {
+
+    /* Responsive Ayarlar */
+    @media (max-width: 768px) {
       .container {
         margin: 0.5rem;
-        padding: 0.8rem;
+        padding: 1rem;
       }
-      /* Düşük genişlikte tabloda sütunları blok halinde göstermek */
+    }
+
+    @media (max-width: 600px) {
       table.multilang,
       table.multilang tr,
       table.multilang td,
@@ -108,16 +112,12 @@
 <body>
 
 <header>
-  <!-- Logo -->
-  <img class="logo" 
-       src="https://www.aydadil.com/wp-content/uploads/2024/03/logo-beyaz-e1742214909433-768x119.png" 
-       alt="Ayda Dil Logo">
+  <img class="logo" src="https://www.aydadil.com/wp-content/uploads/2024/03/logo-beyaz-e1742214909433-768x119.png" alt="Ayda Dil Logo">
   <h1>telc A2 Deneme Sınavına Hoşgeldiniz</h1>
   <h2>Willkommen zum telc A2 Probeprüfung</h2>
 </header>
 
 <div class="container">
-  <!-- 4 Dil - Kısa Açıklama Tablosu -->
   <table class="multilang">
     <tr>
       <th>Türkçe</th>
@@ -126,36 +126,19 @@
       <th>العربية</th>
     </tr>
     <tr>
-      <td>
-        Bu sayfada telc A2 sınavı hakkında kısa bilgilere, puan tablolarına ve çözüm videolarına ulaşabilirsiniz.
-      </td>
-      <td>
-        Auf dieser Seite finden Sie kurze Informationen zur telc A2 Prüfung, Punktetabellen und Lösungsvideos.
-      </td>
-      <td>
-        در این صفحه می‌توانید اطلاعات مختصر درباره آزمون telc A2، جدول امتیازات و ویدیوهای حل آزمون را بیابید.
-      </td>
-      <td>
-        في هذه الصفحة، يمكنك العثور على معلومات مختصرة حول اختبار telc A2 وجداول الدرجات وفيديوهات الحل.
-      </td>
+      <td>Bu sayfada telc A2 sınavı hakkında kısa bilgilere, puan tablolarına ve çözüm videolarına ulaşabilirsiniz.</td>
+      <td>Auf dieser Seite finden Sie kurze Informationen zur telc A2 Prüfung, Punktetabellen und Lösungsvideos.</td>
+      <td>در این صفحه می‌توانید اطلاعات مختصر درباره آزمون telc A2، جدول امتیازات و ویدیوهای حل آزمون را بیابید.</td>
+      <td>في هذه الصفحة، يمكنك العثور على معلومات مختصرة حول اختبار telc A2 وجداول الدرجات وفيديوهات الحل.</td>
     </tr>
     <tr>
-      <td>
-        Sınav 60 puan üzerinden değerlendirilir; geçmek için en az 36 puan gerekir.
-      </td>
-      <td>
-        Die Prüfung wird mit insgesamt 60 Punkten bewertet; zum Bestehen sind mindestens 36 Punkte erforderlich.
-      </td>
-      <td>
-        آزمون بر اساس ۶۰ امتیاز ارزیابی می‌شود؛ برای قبولی به حداقل ۳۶ امتیاز نیاز است.
-      </td>
-      <td>
-        يتم تقييم الامتحان من 60 نقطة؛ للنجاح يجب الحصول على 36 نقطة على الأقل.
-      </td>
+      <td>Sınav 60 puan üzerinden değerlendirilir; geçmek için en az 36 puan gerekir.</td>
+      <td>Die Prüfung wird mit insgesamt 60 Punkten bewertet; zum Bestehen sind mindestens 36 Punkte erforderlich.</td>
+      <td>آزمون بر اساس ۶۰ امتیاز ارزیابی می‌شود؛ برای قبولی به حداقل ۳۶ امتیاز نیاز است.</td>
+      <td>يتم تقييم الامتحان من 60 نقطة؛ للنجاح يجب الحصول على 36 نقطة على الأقل.</td>
     </tr>
   </table>
 
-  <!-- 4 Buton (Lesen, Schreiben, Hören, Sprechen) -->
   <h2>Test Bölümleri / Prüfungsbereiche</h2>
   <div class="buttons">
     <a class="btn" href="Lesena2.html">Lesen</a>
@@ -164,7 +147,6 @@
     <a class="btn" href="sprechena2.html">Sprechen</a>
   </div>
 
-  <!-- Sınav Çözüm Videoları -->
   <h2>Sınav Çözüm Videoları</h2>
   <p style="text-align: center;"><em>Video açmak için butona tıklayın.</em></p>
   <p style="text-align: center;">
@@ -172,7 +154,7 @@
   </p>
   <iframe 
     id="solutionVideo"
-    src="https://drive.google.com/file/d/1_hPTtTSsqtxoOCd2AudZ5VbgZMB3Ai0F/view?usp=drive_link" 
+    src="https://drive.google.com/file/d/1_hPTtTSsqtxoOCd2AudZ5VbgZMB3Ai0F/preview" 
     allowfullscreen>
   </iframe>
 </div>
@@ -182,7 +164,6 @@
 </footer>
 
 <script>
-  // Sınav çözüm videosu için göster/gizle
   function toggleVideo() {
     var iframe = document.getElementById("solutionVideo");
     if (iframe.style.display === "none" || iframe.style.display === "") {
