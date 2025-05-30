@@ -67,6 +67,20 @@
       margin-top: 20px;
       display: none;
     }
+
+    .image-column {
+      width: 100%;
+      text-align: center;
+      background-color: #fff;
+      padding: 1rem 0;
+    }
+
+    .image-column img {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -75,10 +89,14 @@
     <h1>Telc A2 Schreiben</h1>
   </header>
 
+  <div class="image-column">
+    <img src="images/4.png" alt="Lesen Teil 1" />
+  </div>
+
   <div class="container">
     <div id="timer">20:00</div>
     <button class="button" onclick="startTest()">Teste Başla</button>
-    <button class="button" onclick="finishTest()"> Ana Sayfaya Dön</button>
+    <button class="button" onclick="finishTest()">Ana Sayfaya Dön</button>
     <iframe id="formFrame" src=""></iframe>
   </div>
 
