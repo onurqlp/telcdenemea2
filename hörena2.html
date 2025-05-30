@@ -34,10 +34,11 @@
   <h2>Hören Prüfung</h2>
   <button id="startBtn">Testi Başlat</button>
 </div>
-<audio id="audio" preload="auto" style="display:none;"></audio>
+<div id="ytContainer" style="display:none;"></div>
 <button id="replayBtn" style="display:none;">Tekrar Dinle</button>
 
-<div class="section test-content" style="display:none;">
+<!-- Tüm test içerikleri görünür olacak şekilde baştan göster -->
+<div class="section test-content" id="teil1">
   <h2>Teil 1 – Lückentext</h2>
   <div class="content-row">
     <div class="question-column">
@@ -53,7 +54,7 @@
   </div>
 </div>
 
-<div class="section test-content" style="display:none;">
+<div class="section test-content" id="teil2">
   <h2>Teil 2 – A, B, C</h2>
   <div class="content-row">
     <div class="question-column">
@@ -69,7 +70,7 @@
   </div>
 </div>
 
-<div class="section test-content" style="display:none;">
+<div class="section test-content" id="teil3">
   <h2>Teil 3 – A bis I</h2>
   <div class="content-row">
     <div class="question-column">
@@ -116,11 +117,10 @@
   const finishSection = document.getElementById("finishSection");
   const scoreEl = document.getElementById("score");
   const replayBtn = document.getElementById("replayBtn");
-  const audio = document.getElementById("audio");
+  const ytContainer = document.getElementById("ytContainer");
 
   let timeLeft = 25 * 60;
   let interval;
-  const audioURL = "https://dl.dropboxusercontent.com/scl/fi/z9d12anvv1jlxeh6fg4n7/sample.mp3?rlkey=1i9sx9p8ndrg4klqg2kfj2j5o&dl=0";
 
   const correctAnswers = {
     1: "arbeit", 2: "morgen", 3: "freund", 4: "schule", 5: "essen",
@@ -139,12 +139,23 @@
     }, 1000);
   }
 
+  function embedYouTubeAudio() {
+    ytContainer.innerHTML = "";
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = "https://www.youtube.com/embed/hMXXLIySqZM?autoplay=1&loop=1&playlist=hMXXLIySqZM";
+    iframe.allow = "autoplay";
+    iframe.setAttribute("allowfullscreen", "");
+    ytContainer.appendChild(iframe);
+  }
+
   function startTest() {
-    document.querySelectorAll(".test-content").forEach(sec => sec.style.display = "block");
     startSection.style.display = "none";
+    document.getElementById("teil1").style.display = "block";
+    document.getElementById("teil2").style.display = "block";
+    document.getElementById("teil3").style.display = "block";
     replayBtn.style.display = "inline-block";
-    audio.src = audioURL;
-    audio.play();
+    embedYouTubeAudio();
     startTimer();
   }
 
@@ -184,12 +195,13 @@
   }
 
   startBtn.addEventListener("click", startTest);
-  finishBtn.addEventListener("click", showResults);
-  restartBtn.addEventListener("click", restartTest);
+  finishBtn && finishBtn.addEventListener("click", showResults);
+  restartBtn && restartBtn.addEventListener("click", restartTest);
+
   replayBtn.addEventListener("click", () => {
-    audio.currentTime = 0;
-    audio.play();
+    embedYouTubeAudio();
   });
+
   document.body.addEventListener("click", e => {
     if (e.target.tagName === "BUTTON" && e.target.closest('.answer-options')) {
       const parent = e.target.closest(".answer-options");
