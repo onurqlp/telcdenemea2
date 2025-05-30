@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lesen Teil 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lesen Prüfung</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,86 +11,53 @@
       padding: 20px;
       background: #f5f5f5;
     }
-
     .section {
       background: #fff;
       padding: 20px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       border-radius: 5px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
-
     h2 {
       margin-top: 0;
     }
-
     .content-row {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
     }
-
     .image-column {
       flex: 3;
     }
-
     .image-column img {
       width: 100%;
       height: auto;
       border: 1px solid #ddd;
       border-radius: 5px;
     }
-
     .question-column {
       flex: 2;
     }
-
+    .question {
+      margin-bottom: 20px;
+    }
     .question p {
       font-size: 1.1em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-
     .answer-options button {
-      display: block;
-      margin: 8px 0;
+      display: inline-block;
+      margin: 4px 6px 4px 0;
       padding: 8px 12px;
-      width: 100%;
       border: 1px solid #007BFF;
       border-radius: 4px;
       background: #fff;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
     }
-
     .answer-options button.selected {
       background: #007BFF;
       color: #fff;
     }
-
-    #finishBtn {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 1em;
-      background: #28a745;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #answerKey {
-      display: none;
-      margin-top: 20px;
-      padding: 10px;
-      background: #fafafa;
-      border: 1px solid #ccc;
-    }
-
-    #result {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
     @media (max-width: 768px) {
       .content-row {
         flex-direction: column;
@@ -100,74 +67,145 @@
 </head>
 <body>
 
-  <!-- Bölüm 1 -->
-  <div class="section" id="teil1">
-    <h2>Lesen Teil 1</h2>
-    
-    <div class="content-row">
-      <!-- Görsel alanı -->
-      <div class="image-column">
-        <img src="images/4.png" alt="Lesen Teil 1" />
-      </div>
-
-      <!-- Soru ve şıklar -->
-      <div class="question-column">
-        <div class="question" data-q="1">
-          <p><strong>1.</strong> Sie brauchen einen Film für Ihre Kamera.</p>
-          <div class="answer-options">
-            <button data-answer="A">A) 2. Stock.</button>
-            <button data-answer="B">B) 3. Stock.</button>
-            <button data-answer="C">C) Anderes Stockwerk.</button>
-          </div>
+<!-- 📘 TEIL 1 -->
+<div class="section" id="teil1">
+  <h2>Lesen Teil 1 – A, B, C</h2>
+  <div class="content-row">
+    <div class="question-column">
+      <!-- 5 soru -->
+      <div class="question" data-q="1">
+        <p>1. Sie brauchen einen Film für Ihre Kamera.</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button>
         </div>
-
-        <button id="finishBtn">Testi Bitir</button>
-        <div id="result"></div>
+      </div>
+      <div class="question" data-q="2">
+        <p>2. Sie möchten etwas gegen Halsschmerzen.</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button>
+        </div>
+      </div>
+      <div class="question" data-q="3">
+        <p>3. Sie suchen ein Geschenk für ein Kind.</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button>
+        </div>
+      </div>
+      <div class="question" data-q="4">
+        <p>4. Sie wollen eine Zeitung kaufen.</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button>
+        </div>
+      </div>
+      <div class="question" data-q="5">
+        <p>5. Sie brauchen eine neue Brille.</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button>
+        </div>
       </div>
     </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Lesen Teil 1" />
+    </div>
   </div>
+</div>
 
-  <!-- Bölüm 2 -->
-  <div class="section" id="teil2">
-    <h2>Lesen Teil 2</h2>
+<!-- 📗 TEIL 2 -->
+<div class="section" id="teil2">
+  <h2>Lesen Teil 2 – Richtig / Falsch</h2>
+  <div class="content-row">
+    <div class="question-column">
+      <!-- 5 soru -->
+      <div class="question" data-q="6">
+        <p>1. Die Bibliothek ist sonntags geschlossen.</p>
+        <div class="answer-options">
+          <button>Richtig</button><button>Falsch</button>
+        </div>
+      </div>
+      <div class="question" data-q="7">
+        <p>2. Das Kino zeigt heute keine Filme.</p>
+        <div class="answer-options">
+          <button>Richtig</button><button>Falsch</button>
+        </div>
+      </div>
+      <div class="question" data-q="8">
+        <p>3. Der Kurs beginnt am Montag.</p>
+        <div class="answer-options">
+          <button>Richtig</button><button>Falsch</button>
+        </div>
+      </div>
+      <div class="question" data-q="9">
+        <p>4. Man darf im Bus rauchen.</p>
+        <div class="answer-options">
+          <button>Richtig</button><button>Falsch</button>
+        </div>
+      </div>
+      <div class="question" data-q="10">
+        <p>5. Hunde müssen an der Leine geführt werden.</p>
+        <div class="answer-options">
+          <button>Richtig</button><button>Falsch</button>
+        </div>
+      </div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Lesen Teil 2" />
+    </div>
   </div>
+</div>
 
-  <!-- Bölüm 3 -->
-  <div class="section" id="teil3">
-    <h2>Lesen Teil 3</h2>
+<!-- 📕 TEIL 3 -->
+<div class="section" id="teil3">
+  <h2>Lesen Teil 3 – A bis H</h2>
+  <div class="content-row">
+    <div class="question-column">
+      <!-- 5 soru -->
+      <div class="question" data-q="11">
+        <p>1. Welcher Text passt zu einer Einladung zur Party?</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button><button>D</button>
+          <button>E</button><button>F</button><button>G</button><button>H</button>
+        </div>
+      </div>
+      <div class="question" data-q="12">
+        <p>2. Welcher Text passt zu einem Fahrplan?</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button><button>D</button>
+          <button>E</button><button>F</button><button>G</button><button>H</button>
+        </div>
+      </div>
+      <div class="question" data-q="13">
+        <p>3. Welcher Text passt zu einem Essensangebot?</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button><button>D</button>
+          <button>E</button><button>F</button><button>G</button><button>H</button>
+        </div>
+      </div>
+      <div class="question" data-q="14">
+        <p>4. Welcher Text passt zu einer Wohnungsanzeige?</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button><button>D</button>
+          <button>E</button><button>F</button><button>G</button><button>H</button>
+        </div>
+      </div>
+      <div class="question" data-q="15">
+        <p>5. Welcher Text passt zu einem Wetterbericht?</p>
+        <div class="answer-options">
+          <button>A</button><button>B</button><button>C</button><button>D</button>
+          <button>E</button><button>F</button><button>G</button><button>H</button>
+        </div>
+      </div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Lesen Teil 3" />
+    </div>
   </div>
+</div>
 
-  <!-- Cevap Anahtarı -->
-  <div id="answerKey">
-    <h3>Antwortschlüssel</h3>
-    <p>1: B, 2: C, 3: A, 4: B, 5: A</p>
-  </div>
+<!-- 📄 CEVAP ANAHTARI (boş) -->
+<div class="section" id="answerKey">
+  <h2>Antwortschlüssel</h2>
+  <p>1: ..., 2: ..., 3: ..., ... 15: ...</p>
+</div>
 
-  <script>
-    const answerKey = {1:'B',2:'C',3:'A',4:'B',5:'A'};
-    let selected = null;
-
-    document.querySelectorAll('.answer-options button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.answer-options button').forEach(b=> b.classList.remove('selected'));
-        btn.classList.add('selected');
-        selected = btn.getAttribute('data-answer');
-      });
-    });
-
-    document.getElementById('finishBtn').addEventListener('click', () => {
-      const resEl = document.getElementById('result');
-      if (!selected) {
-        resEl.textContent = 'Lütfen bir şık seçin.';
-        return;
-      }
-      if (selected === answerKey[1]) {
-        resEl.textContent = 'Frage 1: Richtig!';
-      } else {
-        resEl.textContent = 'Frage 1: Falsch. Richtige Antwort ist B.';
-      }
-      document.getElementById('answerKey').style.display = 'block';
-    });
-  </script>
 </body>
 </html>
