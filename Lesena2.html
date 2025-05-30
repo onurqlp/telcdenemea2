@@ -7,44 +7,67 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 20px;
       background: #f5f5f5;
     }
+
     .section {
       background: #fff;
-      padding: 15px;
+      padding: 20px;
       margin-bottom: 30px;
       border-radius: 5px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
+
     h2 {
       margin-top: 0;
     }
-    img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
+
+    .content-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
+
+    .image-column {
+      flex: 3;
+    }
+
+    .image-column img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .question-column {
+      flex: 2;
+    }
+
     .question p {
       font-size: 1.1em;
       margin-bottom: 10px;
     }
+
     .answer-options button {
-      margin: 5px;
+      display: block;
+      margin: 8px 0;
       padding: 8px 12px;
+      width: 100%;
       border: 1px solid #007BFF;
       border-radius: 4px;
       background: #fff;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
+
     .answer-options button.selected {
       background: #007BFF;
       color: #fff;
     }
+
     #finishBtn {
-      display: inline-block;
       margin-top: 10px;
       padding: 10px 20px;
       font-size: 1em;
@@ -54,6 +77,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     #answerKey {
       display: none;
       margin-top: 20px;
@@ -61,9 +85,16 @@
       background: #fafafa;
       border: 1px solid #ccc;
     }
+
     #result {
       margin-top: 10px;
       font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .content-row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -72,56 +103,58 @@
   <!-- Bölüm 1 -->
   <div class="section" id="teil1">
     <h2>Lesen Teil 1</h2>
-    <!-- sınav resmi -->
-    <img src="https://hizliresim.com/pn4ney3" alt="Lesen Teil 1" />
+    
+    <div class="content-row">
+      <!-- Görsel alanı -->
+      <div class="image-column">
+        <img src="images/4.png" alt="Lesen Teil 1" />
+      </div>
 
-    <div class="question" data-q="1">
-      <p><strong>1.</strong> Sie brauchen einen Film für Ihre Kamera.</p>
-      <div class="answer-options">
-        <button data-answer="A">A) 2. Stock.</button>
-        <button data-answer="B">B) 3. Stock.</button>
-        <button data-answer="C">C) Anderes Stockwerk.</button>
+      <!-- Soru ve şıklar -->
+      <div class="question-column">
+        <div class="question" data-q="1">
+          <p><strong>1.</strong> Sie brauchen einen Film für Ihre Kamera.</p>
+          <div class="answer-options">
+            <button data-answer="A">A) 2. Stock.</button>
+            <button data-answer="B">B) 3. Stock.</button>
+            <button data-answer="C">C) Anderes Stockwerk.</button>
+          </div>
+        </div>
+
+        <button id="finishBtn">Testi Bitir</button>
+        <div id="result"></div>
       </div>
     </div>
-
-    <button id="finishBtn">Testi Bitir</button>
-    <div id="result"></div>
   </div>
 
-  <!-- Bölüm 2 (boş) -->
+  <!-- Bölüm 2 -->
   <div class="section" id="teil2">
     <h2>Lesen Teil 2</h2>
-    <!-- ileride eklenecek -->
   </div>
 
-  <!-- Bölüm 3 (boş) -->
+  <!-- Bölüm 3 -->
   <div class="section" id="teil3">
     <h2>Lesen Teil 3</h2>
-    <!-- ileride eklenecek -->
   </div>
 
-  <!-- Cevap anahtarı -->
+  <!-- Cevap Anahtarı -->
   <div id="answerKey">
     <h3>Antwortschlüssel</h3>
     <p>1: B, 2: C, 3: A, 4: B, 5: A</p>
   </div>
 
   <script>
-    // tüm soruların anahtarı
     const answerKey = {1:'B',2:'C',3:'A',4:'B',5:'A'};
     let selected = null;
 
-    // şık seçimi
     document.querySelectorAll('.answer-options button').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.answer-options button')
-          .forEach(b=> b.classList.remove('selected'));
+        document.querySelectorAll('.answer-options button').forEach(b=> b.classList.remove('selected'));
         btn.classList.add('selected');
         selected = btn.getAttribute('data-answer');
       });
     });
 
-    // testi bitir butonu
     document.getElementById('finishBtn').addEventListener('click', () => {
       const resEl = document.getElementById('result');
       if (!selected) {
@@ -133,7 +166,6 @@
       } else {
         resEl.textContent = 'Frage 1: Falsch. Richtige Antwort ist B.';
       }
-      // anahtarı göster
       document.getElementById('answerKey').style.display = 'block';
     });
   </script>
