@@ -110,5 +110,46 @@
   <button id="startBtn">Testi Başlat</button>
 </div>
 
-<!-- SORU BÖLÜMLERİ BURADA (TEIL 1, 2, 3) -->
-<!-- (önceki HTML'in kalan bölümü korunarak devam eder...) -->
+<div class="section test-content" id="teil1" style="display:none;">
+  <h2>Lesen Teil 1 – A, B, C</h2>
+  <div class="content-row">
+    <div class="question-column">
+      <div class="question" data-q="1"><p>1. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="2"><p>2. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="3"><p>3. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="4"><p>4. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+      <div class="question" data-q="5"><p>5. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+    </div>
+    <div class="image-column">
+      <img src="images/4.png" alt="Lesen Teil 1" />
+    </div>
+  </div>
+</div>
+
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const timerEl = document.getElementById("timer");
+  const teil1 = document.getElementById("teil1");
+  let timeLeft = 30 * 60;
+  let interval;
+
+  function startTimer() {
+    timerEl.style.display = "block";
+    interval = setInterval(() => {
+      const min = Math.floor(timeLeft / 60);
+      const sec = timeLeft % 60;
+      timerEl.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
+      timeLeft--;
+      if (timeLeft < 0) clearInterval(interval);
+    }, 1000);
+  }
+
+  startBtn.addEventListener("click", () => {
+    teil1.style.display = "block";
+    document.getElementById("startSection").style.display = "none";
+    startTimer();
+  });
+</script>
+
+</body>
+</html>
