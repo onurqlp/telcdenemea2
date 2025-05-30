@@ -22,6 +22,7 @@
     .answer-options button.selected { outline: 2px solid #234078; background: #fff; color: #234078; }
     .answer-options button.correct { background: #28a745; }
     .answer-options button.incorrect { background: #dc3545; }
+    .text-feedback { margin-top: 4px; font-size: 0.9em; }
     #startBtn, #finishBtn, #restartBtn, #homeBtn, #replayBtn {
       font-size: 1.2em; padding: 12px 25px; background: #234078;
       color: #fff; border: none; border-radius: 8px; cursor: pointer; margin: 10px 5px;
@@ -49,45 +50,41 @@
   <div class="question" data-q="5"><p>5. ZUG<br>Abfahrt um: ____________</p><div class="answer-options"><input type="text"></div></div>
 </div>
 
-<div class="section" id="teil2">
-  <h2>Teil 2 – A, B, C</h2>
-  <div class="question-column">
-    <div class="question" data-q="6"><p>6. Wie wird das Wetter am Wochenende?</p>
-      <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-    <div class="question" data-q="7"><p>7. Was kann man gewinnen?</p>
-      <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-    <div class="question" data-q="8"><p>8. Wo gibt es noch freie Parkplätze?</p>
-      <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-    <div class="question" data-q="9"><p>9. Was ist richtig?</p>
-      <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-    <div class="question" data-q="10"><p>10. Welches Problem gibt es auf der A 659?</p>
-      <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
-  </div>
+<h2>Teil 2 – A, B, C</h2>
+<div class="question-column">
+  <div class="question" data-q="6"><p>6. Wie wird das Wetter am Wochenende?</p>
+    <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="7"><p>7. Was kann man gewinnen?</p>
+    <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="8"><p>8. Wo gibt es noch freie Parkplätze?</p>
+    <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="9"><p>9. Was ist richtig?</p>
+    <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="10"><p>10. Welches Problem gibt es auf der A 659?</p>
+    <div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
 </div>
 
-<div class="section" id="teil3">
-  <h2>Teil 3 – Was passt?</h2>
-  <ul>
-    <li><strong>A</strong> macht Hähnchen mit Reis.</li>
-    <li><strong>B</strong> holt die Getränke.</li>
-    <li><strong>C</strong> bringt ein Spiel mit.</li>
-    <li><strong>D</strong> bringt Schweinefleisch mit.</li>
-    <li><strong>E</strong> macht einen Kuchen.</li>
-    <li><strong>F</strong> kocht eine Gemüsesuppe.</li>
-    <li><strong>G</strong> bringt einen Nudelsalat mit.</li>
-    <li><strong>H</strong> bringt CDs mit.</li>
-    <li><strong>I</strong> macht Musik.</li>
-  </ul>
-  <div class="question-column">
-    <div class="question" data-q="11"><p>Susanne</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
-    <div class="question" data-q="12"><p>Rainer</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
-    <div class="question" data-q="13"><p>Martin</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
-    <div class="question" data-q="14"><p>Nicole</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
-    <div class="question" data-q="15"><p>Frau Lang</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
-  </div>
+<h2>Teil 3 – Was passt?</h2>
+<ul>
+  <li><strong>A</strong> macht Hähnchen mit Reis.</li>
+  <li><strong>B</strong> holt die Getränke.</li>
+  <li><strong>C</strong> bringt ein Spiel mit.</li>
+  <li><strong>D</strong> bringt Schweinefleisch mit.</li>
+  <li><strong>E</strong> macht einen Kuchen.</li>
+  <li><strong>F</strong> kocht eine Gemüsesuppe.</li>
+  <li><strong>G</strong> bringt einen Nudelsalat mit.</li>
+  <li><strong>H</strong> bringt CDs mit.</li>
+  <li><strong>I</strong> macht Musik.</li>
+</ul>
+<div class="question-column">
+  <div class="question" data-q="11"><p>Susanne</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
+  <div class="question" data-q="12"><p>Rainer</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
+  <div class="question" data-q="13"><p>Martin</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
+  <div class="question" data-q="14"><p>Nicole</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
+  <div class="question" data-q="15"><p>Frau Lang</p><div class="answer-options"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button></div></div>
 </div>
 
-<div id="finishSection" class="section" style="display:none;">
+<div class="section" id="finishSection" style="display:none;">
   <h2>Test Sonuçları</h2>
   <div id="score"></div>
   <button id="restartBtn">Yeniden Başlat</button>
@@ -99,8 +96,8 @@
     1: "Donnerstag",
     2: "0611245498",
     3: "Vater und Mutter kommen",
-    4: "Salat",
-    5: "20 Uhr 14",
+    4: "Vaterund Mutter kommen",
+    5: "Salat",
     6: "A",
     7: "C",
     8: "B",
@@ -113,125 +110,99 @@
     15: "E"
   };
 
-  const timerEl = document.getElementById("timer");
-  const startBtn = document.getElementById("startBtn");
-  const finishBtn = document.getElementById("finishBtn");
-  const restartBtn = document.getElementById("restartBtn");
-  const replayBtn = document.getElementById("replayBtn");
-  const ytContainer = document.getElementById("ytContainer");
-  const finishSection = document.getElementById("finishSection");
-  const scoreEl = document.getElementById("score");
-  const startSection = document.getElementById("startSection");
-
-  let timeLeft = 25 * 60;
-  let interval;
-
-  function levenshtein(a, b) {
-    const an = a.length, bn = b.length;
-    if (an === 0) return bn;
-    if (bn === 0) return an;
-    const matrix = Array.from({ length: an + 1 }, () => Array(bn + 1).fill(0));
-    for (let i = 0; i <= an; i++) matrix[i][0] = i;
-    for (let j = 0; j <= bn; j++) matrix[0][j] = j;
-    for (let i = 1; i <= an; i++) {
-      for (let j = 1; j <= bn; j++) {
-        const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j] + 1,
-          matrix[i][j - 1] + 1,
-          matrix[i - 1][j - 1] + cost
-        );
-      }
-    }
-    return matrix[an][bn];
-  }
-
   function normalize(text) {
     return text.toLowerCase().replace(/\s+/g, '');
   }
 
-  function startTest() {
-    startSection.style.display = "none";
-    timerEl.style.display = "block";
-    replayBtn.style.display = "inline-block";
-    embedYouTubeAudio();
-    interval = setInterval(() => {
-      const min = Math.floor(timeLeft / 60);
-      const sec = timeLeft % 60;
-      timerEl.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
-      timeLeft--;
-      if (timeLeft < 0) clearInterval(interval);
-    }, 1000);
-  }
-
-  function embedYouTubeAudio() {
-    ytContainer.innerHTML = "";
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = "https://www.youtube.com/embed/hMXXLIySqZM?autoplay=1&loop=1&playlist=hMXXLIySqZM";
-    iframe.allow = "autoplay";
-    ytContainer.appendChild(iframe);
+  function levenshtein(a, b) {
+    const matrix = [];
+    for (let i = 0; i <= b.length; i++) {
+      matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+      matrix[0][j] = j;
+    }
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        matrix[i][j] = b.charAt(i - 1) === a.charAt(j - 1)
+          ? matrix[i - 1][j - 1]
+          : Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j] + 1
+            );
+      }
+    }
+    return matrix[b.length][a.length];
   }
 
   function showResults() {
-    let correctCount = 0;
-    let halfPoint = 0;
+    let correct = 0;
+    let half = 0;
 
     document.querySelectorAll(".question").forEach(q => {
-      const qNum = q.getAttribute("data-q");
-      const correct = correctAnswers[qNum];
-      const input = q.querySelector("input");
-      const buttons = q.querySelectorAll("button");
+      const qn = q.getAttribute("data-q");
+      const corr = correctAnswers[qn];
+      const inp = q.querySelector("input");
+      const btns = q.querySelectorAll("button");
 
-      if (input) {
-        const user = normalize(input.value);
-        const answer = normalize(correct);
-        if (user === answer) {
-          correctCount++;
-          input.style.border = "2px solid green";
-        } else if (levenshtein(user, answer) === 1) {
-          halfPoint += 0.5;
-          input.style.border = "2px solid orange";
+      if (inp) {
+        const user = normalize(inp.value);
+        const ans = normalize(corr);
+        const fb = document.createElement("div");
+        fb.className = "text-feedback";
+
+        if (user === ans) {
+          correct++;
+          inp.style.border = "2px solid green";
+          fb.textContent = `✅ Doğru cevap: ${corr}`;
+          fb.style.color = "green";
+        } else if (levenshtein(user, ans) === 1) {
+          half += 0.5;
+          inp.style.border = "2px solid orange";
+          fb.textContent = `🟧 Neredeyse doğru. Doğru cevap: ${corr}`;
+          fb.style.color = "orange";
         } else {
-          input.style.border = "2px solid red";
+          inp.style.border = "2px solid red";
+          fb.textContent = `❌ Doğru cevap: ${corr}`;
+          fb.style.color = "red";
         }
+        q.querySelector(".answer-options").appendChild(fb);
       }
 
-      buttons.forEach(btn => {
-        if (btn.classList.contains("selected")) {
-          if (btn.textContent.trim() === correct) {
-            btn.classList.add("correct");
-            correctCount++;
+      btns.forEach(b => {
+        if (b.classList.contains("selected")) {
+          if (b.textContent.trim() === corr) {
+            b.classList.add("correct");
+            correct++;
           } else {
-            btn.classList.add("incorrect");
+            b.classList.add("incorrect");
           }
-        } else if (btn.textContent.trim() === correct) {
-          btn.classList.add("correct");
+        } else if (b.textContent.trim() === corr) {
+          b.classList.add("correct");
         }
       });
     });
 
-    scoreEl.textContent = `Doğru Sayısı: ${correctCount + halfPoint} / 15`;
-    finishSection.style.display = "block";
-    window.scrollTo({ top: finishSection.offsetTop, behavior: 'smooth' });
+    document.getElementById("score").textContent = `Doğru Sayısı: ${correct + half} / 15`;
+    document.getElementById("finishSection").style.display = "block";
+    window.scrollTo({ top: document.getElementById("finishSection").offsetTop, behavior: 'smooth' });
   }
 
-  function restartTest() {
-    location.reload();
-  }
+  document.getElementById("startBtn")?.addEventListener("click", () => {
+    document.getElementById("startSection").style.display = "none";
+  });
+
+  document.getElementById("finishBtn").addEventListener("click", showResults);
+  document.getElementById("restartBtn").addEventListener("click", () => location.reload());
 
   document.body.addEventListener("click", e => {
     if (e.target.tagName === "BUTTON" && e.target.closest('.answer-options')) {
       const parent = e.target.closest(".answer-options");
-      parent.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
+      parent.querySelectorAll("button").forEach(btn => btn.classList.remove("selected"));
       e.target.classList.add("selected");
     }
   });
-
-  startBtn.onclick = startTest;
-  finishBtn.onclick = showResults;
-  restartBtn.onclick = restartTest;
-  replayBtn.onclick = embedYouTubeAudio;
 </script>
 </body>
 </html>
