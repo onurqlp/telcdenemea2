@@ -1,156 +1,223 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Hören Bölümü Test</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telc A2 Hören</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      padding-top: 60px; /* sabit üst kısım için boşluk */
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
     }
-    /* Üstte sabit duran buton */
-    #returnHome {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      z-index: 1000;
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 10px;
     }
-    .question-section {
-      margin-bottom: 30px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
+    #timer {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #d9534f;
+      margin-bottom: 20px;
     }
-    .question-section h2 {
-      color: #333;
+    .section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 40px;
+      border-radius: 5px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
     }
     .question {
-      margin: 10px 0;
+      margin-bottom: 20px;
     }
-    .question ul {
-      list-style: none;
-      padding-left: 0;
+    .question p {
+      font-size: 1.1em;
+      margin-bottom: 8px;
     }
-    .question li {
-      margin-bottom: 5px;
+    .answer-options input[type="text"],
+    .answer-options button {
+      font-size: 1em;
+      padding: 8px 12px;
+      margin-top: 5px;
     }
-    /* Player’i ekranda görünmeyecek şekilde off-screen konumlandırıyoruz */
-    #player {
-      position: absolute;
-      left: -9999px;
+    .answer-options button {
+      margin-right: 6px;
+      background: #234078;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
-    /* Cevap anahtarı başlangıçta gizli */
-    #answerKey {
-      display: none;
+    .answer-options button.selected {
+      outline: 2px solid #234078;
+      background: #fff;
+      color: #234078;
+    }
+    .answer-options button.correct {
+      background: #28a745;
+    }
+    .answer-options button.incorrect {
+      background: #dc3545;
+    }
+    #startSection {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    #startBtn, #finishBtn, #restartBtn, #homeBtn {
+      font-size: 1.2em;
+      padding: 12px 25px;
+      background: #234078;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px 5px;
+    }
+    #finishSection {
+      text-align: center;
       margin-top: 20px;
-      padding: 10px;
-      background: #f4f4f4;
-      border: 1px solid #ccc;
+    }
+    #score {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #333;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- Sabit üst buton -->
-  <button id="returnHome" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
-
-  <h1>Hören Bölümü Test</h1>
-
-  <!-- Ses Çalma Butonu -->
-  <button onclick="playAudio()">Ses Başlat</button>
-
-  <!-- Test Bölümleri -->
-  <div id="teil1" class="question-section">
-    <h2>Teil 1</h2>
-    <div class="question">
-      <p>Soru 1: Örnek soru metni nedir?</p>
-      <ul>
-        <li><input type="radio" name="q1" value="A"> A Şıkkı</li>
-        <li><input type="radio" name="q1" value="B"> B Şıkkı</li>
-        <li><input type="radio" name="q1" value="C"> C Şıkkı</li>
-        <li><input type="radio" name="q1" value="D"> D Şıkkı</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="teil2" class="question-section">
-    <h2>Teil 2</h2>
-    <div class="question">
-      <p>Soru 2: Ses kaydında belirtilen önemli bilgi hangisidir?</p>
-      <ul>
-        <li><input type="radio" name="q2" value="A"> A Şıkkı</li>
-        <li><input type="radio" name="q2" value="B"> B Şıkkı</li>
-        <li><input type="radio" name="q2" value="C"> C Şıkkı</li>
-        <li><input type="radio" name="q2" value="D"> D Şıkkı</li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="teil3" class="question-section">
-    <h2>Teil 3</h2>
-    <div class="question">
-      <p>Soru 3: Dinleme parçasındaki ana tema nedir?</p>
-      <ul>
-        <li><input type="radio" name="q3" value="A"> A Şıkkı</li>
-        <li><input type="radio" name="q3" value="B"> B Şıkkı</li>
-        <li><input type="radio" name="q3" value="C"> C Şıkkı</li>
-        <li><input type="radio" name="q3" value="D"> D Şıkkı</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Cevap Anahtarı Butonu -->
-  <button onclick="showAnswers()">Cevapları Göster / Antworten anzeigen</button>
-  <div id="answerKey">
-    <h2>Cevap Anahtarı / Antwortschlüssel</h2>
-    <p><strong>Türkçe Cevaplar:</strong> Soru 1: A, Soru 2: B, Soru 3: C</p>
-    <p><strong>Almanca Cevaplar:</strong> Frage 1: A, Frage 2: B, Frage 3: C</p>
-  </div>
-
-  <!-- YouTube Player (görünmez, yalnızca ses için) -->
-  <div id="player"></div>
-
-  <script>
-    // YouTube IFrame API'sini asenkron olarak yükle
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId: 'C_6iZMeK3N8',
-        playerVars: {
-          'autoplay': 0,
-          'controls': 0,
-          'modestbranding': 1,
-          'playsinline': 1
-        },
-        events: {
-          'onReady': onPlayerReady
+<h1>Telc A2 Hören</h1>
+<div id="timer" style="display:none;">25:00</div>
+<div id="startSection" class="section">
+  <h2>Hören Prüfung</h2>
+  <button id="startBtn">Testi Başlat</button>
+</div>
+<audio id="audio" src="https://www.youtube.com/watch?v=C_6iZMeK3N8&list=PLn-uCYuRwC-c_jnL1tkpi-N7W9QWvUpUA" type="audio/mp3" style="display:none;"></audio>
+<div class="section test-content" style="display:none;">
+  <h2>Teil 1 – Lückentext</h2>
+  <div class="question" data-q="1"><p>1. Frage</p><div class="answer-options"><input type="text"></div></div>
+  <div class="question" data-q="2"><p>2. Frage</p><div class="answer-options"><input type="text"></div></div>
+  <div class="question" data-q="3"><p>3. Frage</p><div class="answer-options"><input type="text"></div></div>
+  <div class="question" data-q="4"><p>4. Frage</p><div class="answer-options"><input type="text"></div></div>
+  <div class="question" data-q="5"><p>5. Frage</p><div class="answer-options"><input type="text"></div></div>
+</div>
+<div class="section test-content" style="display:none;">
+  <h2>Teil 2 – A, B, C</h2>
+  <div class="question" data-q="6"><p>6. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="7"><p>7. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="8"><p>8. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="9"><p>9. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+  <div class="question" data-q="10"><p>10. Frage</p><div class="answer-options"><button>A</button><button>B</button><button>C</button></div></div>
+</div>
+<div class="section test-content" style="display:none;">
+  <h2>Teil 3 – A bis I</h2>
+  <div class="question" data-q="11"><p>11. Frage</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button>
+    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="12"><p>12. Frage</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button>
+    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="13"><p>13. Frage</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button>
+    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="14"><p>14. Frage</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button>
+    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+  <div class="question" data-q="15"><p>15. Frage</p><div class="answer-options">
+    <button>A</button><button>B</button><button>C</button><button>D</button>
+    <button>E</button><button>F</button><button>G</button><button>H</button><button>I</button>
+  </div></div>
+</div>
+<div id="finishSection" class="section test-content" style="display:none;">
+  <button id="finishBtn">Testi Bitir</button>
+  <div id="score"></div>
+  <button id="restartBtn">Yeniden Başlat</button>
+  <a href="index.html" id="homeBtn">Ana Ekrana Dön</a>
+</div>
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const audio = document.getElementById("audio");
+  const finishBtn = document.getElementById("finishBtn");
+  const restartBtn = document.getElementById("restartBtn");
+  const timerEl = document.getElementById("timer");
+  const startSection = document.getElementById("startSection");
+  const finishSection = document.getElementById("finishSection");
+  const scoreEl = document.getElementById("score");
+  let timeLeft = 25 * 60;
+  let interval;
+  const correctAnswers = {
+    1: "arbeit", 2: "morgen", 3: "freund", 4: "schule", 5: "essen",
+    6: "B", 7: "C", 8: "A", 9: "C", 10: "B",
+    11: "D", 12: "G", 13: "A", 14: "H", 15: "F"
+  };
+  function startTimer() {
+    timerEl.style.display = "block";
+    interval = setInterval(() => {
+      const min = Math.floor(timeLeft / 60);
+      const sec = timeLeft % 60;
+      timerEl.textContent = `${min}:${sec.toString().padStart(2, '0')}`;
+      timeLeft--;
+      if (timeLeft < 0) clearInterval(interval);
+    }, 1000);
+  }
+  function startTest() {
+    document.querySelectorAll(".test-content").forEach(sec => sec.style.display = "block");
+    startSection.style.display = "none";
+    audio.play();
+    startTimer();
+  }
+  function calculateScore() {
+    let correctCount = 0;
+    document.querySelectorAll(".question").forEach(q => {
+      const qNum = q.getAttribute("data-q");
+      const correct = correctAnswers[qNum];
+      const buttons = q.querySelectorAll("button");
+      const input = q.querySelector("input");
+      if (input && input.value.trim().toLowerCase() === correct.toLowerCase()) correctCount++;
+      buttons.forEach(btn => {
+        if (btn.classList.contains("selected")) {
+          if (btn.textContent === correct) {
+            btn.classList.add("correct");
+            correctCount++;
+          } else {
+            btn.classList.add("incorrect");
+          }
+        } else if (btn.textContent === correct) {
+          btn.classList.add("correct");
         }
       });
+    });
+    return correctCount;
+  }
+  function showResults() {
+    const score = calculateScore();
+    scoreEl.textContent = `Doğru Sayısı: ${score} / 15`;
+    finishSection.style.display = "block";
+    window.scrollTo({ top: finishSection.offsetTop, behavior: 'smooth' });
+  }
+  function restartTest() {
+    location.reload();
+  }
+  startBtn.addEventListener("click", startTest);
+  finishBtn.addEventListener("click", showResults);
+  restartBtn.addEventListener("click", restartTest);
+  document.body.addEventListener("click", e => {
+    if (e.target.tagName === "BUTTON" && e.target.closest('.answer-options')) {
+      const parent = e.target.closest(".answer-options");
+      parent.querySelectorAll("button").forEach(btn => btn.classList.remove("selected"));
+      e.target.classList.add("selected");
     }
-
-    function onPlayerReady(event) {
-      // Player hazır olduğunda herhangi bir ek işlem gerekmez.
-    }
-
-    // Ses çalma fonksiyonu: Player aracılığıyla videonun sesi çalınır.
-    function playAudio() {
-      if (player && typeof player.playVideo === 'function') {
-        player.playVideo();
-      }
-    }
-
-    // Cevap anahtarını gösterme fonksiyonu
-    function showAnswers() {
-      document.getElementById('answerKey').style.display = 'block';
-    }
-  </script>
+  });
+</script>
 </body>
 </html>
