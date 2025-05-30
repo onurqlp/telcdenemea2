@@ -1,47 +1,90 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sprechen Bölümü</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #234078;
+    }
+
+    p {
+      text-align: center;
+      max-width: 800px;
+      margin: 10px auto 30px auto;
+      font-size: 16px;
+      color: #333;
+    }
+
     table {
       border-collapse: collapse;
-      width: 60%;
-      margin-bottom: 20px;
+      width: 90%;
+      margin: 0 auto 30px auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    table, th, td {
-      border: 1px solid #000;
-    }
+
     th, td {
-      padding: 8px;
+      border: 1px solid #000;
+      padding: 12px;
       text-align: center;
     }
+
     th {
-      background-color: #f0f0f0;
+      background-color: #234078;
+      color: #fff;
     }
-    label {
-      display: inline-block;
-      width: 120px;
-      margin-bottom: 8px;
+
+    .iframe-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
     }
-    input[type="date"], input[type="time"] {
-      margin-bottom: 10px;
-      padding: 4px;
+
+    iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
     }
-    button {
-      padding: 6px 12px;
-      cursor: pointer;
-    }
-    /* Ana sayfa butonunun her zaman görünür olması için fixed konumlandırma */
+
     .home-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
     }
+
+    .home-button button {
+      background-color: #234078;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .home-button button:hover {
+      background-color: #1c305d;
+    }
   </style>
 </head>
 <body>
+
   <h1>4. Sprechen</h1>
+
   <table>
     <thead>
       <tr>
@@ -56,30 +99,24 @@
         <td>Teil 1</td>
         <td>Sich vorstellen</td>
         <td>ca. 3 Minuten</td>
-        <td></td>
+        <td>3</td>
       </tr>
       <tr>
         <td>Teil 2</td>
         <td>Ein Alltagsgespräch führen</td>
         <td>ca. 4 Minuten</td>
-        <td>15</td>
+        <td>6</td>
       </tr>
       <tr>
         <td>Teil 3</td>
         <td>Etwas aushandeln</td>
-        <td>ca. 3 Minuten</td>
-        <td></td>
+        <td>ca. 4 Minuten</td>
+        <td>6</td>
       </tr>
-      <tr>
-        <td>Beschlussfassung der Prüfenden</td>
-        <td colspan="2"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Gesamt</td>
-        <td>ca. 15 Minuten</td>
-        <td></td>
-        <td>60</td>
+      <tr style="font-weight: bold; background-color: #e0e0e0;">
+        <td colspan="2">Gesamt</td>
+        <td>ca. 12 Minuten</td>
+        <td>15</td>
       </tr>
     </tbody>
   </table>
@@ -87,27 +124,13 @@
   <h2>Randevu Oluşturma</h2>
   <p>Randevu oluşturduktan sonra öğretmenlerimiz, belirlediğiniz tarih ve saatte Zoom bağlantı linkini sizinle paylaşacak. Lütfen sınav saatinde hazır olunuz.</p>
 
-  <form action="/randevu" method="POST" onsubmit="return showMessage()">
-    <div>
-      <label for="tarih">Tarih Seçin:</label>
-      <input type="date" id="tarih" name="tarih" required>
-    </div>
-    <div>
-      <label for="saat">Saat Seçin:</label>
-      <input type="time" id="saat" name="saat" required>
-    </div>
-    <button type="submit">Randevu Oluştur</button>
-  </form>
-
-  <div class="home-button">
-    <button type="button" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+  <div class="iframe-container">
+    <iframe src="https://forms.gle/icsj1ZFJSLWtH8Vf9" allowfullscreen></iframe>
   </div>
 
-  <script>
-    function showMessage() {
-      alert('Öğretmenlerimiz, belirlediğiniz saatte Zoom linki atacak ve sınava hazır olmanız beklenmektedir. Test bu!');
-      return true;
-    }
-  </script>
+  <div class="home-button">
+    <button onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+  </div>
+
 </body>
 </html>
