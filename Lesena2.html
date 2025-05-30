@@ -12,8 +12,14 @@
     h2 { margin-top: 0; }
     .content-row { display: flex; flex-wrap: wrap; gap: 20px; }
     .image-column { flex: 3; display: flex; align-items: flex-start; justify-content: center; }
-    .image-column img { width: 100%; max-width: 250px; height: auto; border: 1px solid #ddd; border-radius: 5px; }
-    .question-column { flex: 2; }
+    .image-column img {
+      width: 100%;
+      max-width: 325px; /* büyütüldü */
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .question-column { flex: 2; min-width: 250px; }
     .question { margin-bottom: 20px; }
     .question p { font-size: 1.1em; margin-bottom: 8px; }
     .answer-options button {
@@ -24,6 +30,7 @@
       border-radius: 4px;
       background: #fff;
       cursor: pointer;
+      font-size: 1em;
     }
     .answer-options button.selected { background: #007BFF; color: #fff; }
     .answer-options button.correct { background: #28a745; color: #fff; }
@@ -44,7 +51,11 @@
     @media (max-width: 768px) {
       .content-row { flex-direction: column; }
       .image-column img { max-width: 100%; }
-      .answer-options button { width: 100%; margin-bottom: 8px; }
+      .answer-options button {
+        width: 100%;
+        margin-bottom: 8px;
+        font-size: 1.05em;
+      }
     }
   </style>
 </head>
@@ -58,7 +69,6 @@
   <button id="startBtn">Testi Başlat</button>
 </div>
 
-<!-- SORU BÖLÜMLERİ -->
 <div class="section test-content" style="display:none;">
   <h2>Lesen Teil 1 – A, B, C</h2>
   <div class="content-row">
